@@ -38,7 +38,7 @@ class Header extends Component {
           <div className="navbar-menu">
               <div className="navbar-start">
                   <a className="navbar-item">
-                      <Link to="/">ReactReduxAuth</Link>
+                      <Link to="/">Memrily</Link>
                   </a>
                </div> 
               <div className="navss">
