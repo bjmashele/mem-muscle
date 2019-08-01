@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import requireAuth from '../../auth/components/requireAuth';
 import Layout from './Layout';
 

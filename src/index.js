@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import Welcome from './auth/components/Welcome';
 import Signup from './auth/components/auth/Signup';
-import Decks from './decks/Decks.jsx';
+import Decks from './decks/components/Decks.jsx';
 import Signout from './auth/components/auth/Signout';
 import Signin from './auth/components/auth/Signin';
 
