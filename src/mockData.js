@@ -1,12 +1,17 @@
+import geography from './assets/geography.png';
+import music from './assets/music.jpeg';
+
 export const data = {
   decks: [
     {
       id: 1,
       name: 'Geography',
+      img: geography,
     },
     {
       id: 2,
       name: 'Music',
+      img: music,
     },
   ],
   cards: [

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DecksList from '../components/DecksList.jsx';
+import CardsShowCase from '../containers/CardsShowCase';
 import { data } from '../../mockData';
 
 // const data = [{ name: 1 }, { name: 'two' }];

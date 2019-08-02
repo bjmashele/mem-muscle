@@ -1,13 +1,15 @@
 import React from 'react';
 
-const DeckItem = ({ name }) => (
+const DeckItem = ({ name, img }) => (
   <div className="card" style={{ marginBottom: '15px' }}>
+    <div className="card-content title is-4" style={{ textAlign: 'center' }}>
+      {name}
+    </div>
     <div className="card-image">
       <figure className="image is 4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+        <img src={img} alt="Placeholder image" />
       </figure>
     </div>
-    <div className="card-content">{name}</div>
   </div>
 );
 

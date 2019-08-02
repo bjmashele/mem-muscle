@@ -12,6 +12,7 @@ import Signin from './auth/components/auth/Signin';
 
 // styles
 import 'bulma/css/bulma.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // initiate store
 import { configureStore } from './store/configureStore';

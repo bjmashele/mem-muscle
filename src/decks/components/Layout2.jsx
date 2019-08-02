@@ -19,7 +19,10 @@ const Layout = () => {
       <div className="box content">
         <DecksContainer />
       </div>
-
+      {/* <div className="box sidebar2">Sidebar 2</div> */}
+      {/* <div className="content">
+        <CardsShowCase />
+      </div> */}
       <div className="box footer">Footer</div>
     </div>
   );
