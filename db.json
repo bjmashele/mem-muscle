@@ -7,6 +7,30 @@
     {
       "id": 2,
       "name": "Music"
+    },
+    {
+      "id": 3,
+      "name": "Sports"
+    },
+    {
+      "id": 4,
+      "name": "Tourism"
+    },
+    {
+      "id": 5,
+      "name": "Geology"
+    },
+    {
+      "id": 6,
+      "name": "Mathematics"
+    },
+    {
+      "id": 7,
+      "name": "Javascript"
+    },
+    {
+      "id": 8,
+      "name": "Technology"
     }
   ],
   "cards": [
