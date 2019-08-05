@@ -7,10 +7,21 @@ export const FETCH_DECKS_FAILED = 'FETCH_DECKS_FAILED';
 export const RECEIVE_ENTITIES = 'RECEIVE_ENTITIES';
 export const FETCH_DECKS_SUCCEEDED = 'FETCH_DECKS_SUCCEEDED';
 
+// normalize decks data
+
+const card = new schema.Entity('cards');
+const deck = new schema.Entity('decks', {
+  cards: [card],
+});
+
+const deckList = [deck];
+const deckNormalizer = deckResult => normalize(deckResult, deckList);
+
 export const fetchDecks = () => (dispatch) => {
   dispatch({ type: FETCH_DECKS_STARTED });
   DecksApi.fetchDecks()
     .then(response => response.json())
+    .then(data => deckNormalizer(data))
     .then(
       data => dispatch({ type: FETCH_DECKS_SUCCEEDED, data }),
       error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message || 'Unexpected Error!!!' }),

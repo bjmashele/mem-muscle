@@ -8,7 +8,7 @@ const API = 'http://localhost:3030/api';
 
 // const DECKS_API = `${API}/decks`;
 // Use json-server
-const DECKS_API = 'http://localhost:3035/decks?_embed=cards';
+const DECKS_API = 'http://localhost:3035/decks';
 // Get card decks
 // const fetchDecks = () => HttpClient.get(DECKS_API);
 const fetchDecks = () => fetch(DECKS_API, {

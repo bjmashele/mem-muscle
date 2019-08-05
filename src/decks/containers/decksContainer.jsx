@@ -14,6 +14,8 @@ class decksContainer extends Component {
   }
 
   render() {
+    console.log('in deck list', JSON.stringify(this.props.data));
+
     if (this.props.isLoading) {
       return <div className="loading">Loading ...</div>;
     }

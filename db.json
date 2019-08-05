@@ -2,35 +2,34 @@
   "decks": [
     {
       "id": 1,
-      "name": "Geography"
+      "name": "Geography",
+      "cards": [
+        {
+          "id": 1,
+          "front": "Name a city that is in two continents",
+          "back": "Istanbul",
+          "projectId": 1
+        },
+        {
+          "id": 3,
+          "front": "Which country has the highest biodiversity ",
+          "back": "Madagasca",
+
+          "projectId": 1
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Music"
-    },
-    {
-      "id": 3,
-      "name": "Sports"
-    },
-    {
-      "id": 4,
-      "name": "Tourism"
-    },
-    {
-      "id": 5,
-      "name": "Geology"
-    },
-    {
-      "id": 6,
-      "name": "Mathematics"
-    },
-    {
-      "id": 7,
-      "name": "Javascript"
-    },
-    {
-      "id": 8,
-      "name": "Technology"
+      "name": "Music",
+      "cards": [
+        {
+          "id": 2,
+          "front": "Which group had a hit song titled 'Fields of Gold'",
+          "back": "Sting",
+          "projectId": 2
+        }
+      ]
     }
   ],
   "cards": [
