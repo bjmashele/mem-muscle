@@ -18,30 +18,35 @@ const deckList = [deck];
 const deckNormalizer = deckResult => normalize(deckResult, deckList);
 
 export const fetchDecks = () => (dispatch) => {
-  dispatch({ type: FETCH_DECKS_STARTED });
+  dispatch(fetchDecksStarted());
   DecksApi.fetchDecks()
     .then(response => response.json())
     .then(data => deckNormalizer(data))
-    .then(
-      data => dispatch({ type: FETCH_DECKS_SUCCEEDED, data }),
-      error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message || 'Unexpected Error!!!' }),
-    );
+    .then(data => dispatch(receiveEntities(data)), error => dispatch(fetchDecksFailed(error)));
 };
 
-// export function fetchDecksStarted(decks) {
-//   return { type: FETCH_DECKS_STARTED, payload: { decks } };
-// }
+export function fetchDecksStarted() {
+  return { type: FETCH_DECKS_STARTED };
+}
 
-// export function fetchDecksFailed(err) {
-//   return { type: FETCH_DECKS_FAILED, payload: err };
-// }
+export function fetchDecksFailed(error) {
+  return { type: FETCH_DECKS_FAILED, error: error || 'Unexpected Error !!!' };
+}
 
-// export function fetchDecksSucceeded(decks) {
-//   return {
-//     type: FETCH_DECKS_SUCCEEDED,
-//     payload: decks,
-//   };
-// }
+export function fetchDecksSucceeded(data) {
+  return {
+    type: FETCH_DECKS_SUCCEEDED,
+    data,
+  };
+}
+
+export function receiveEntities(entities) {
+  return {
+    type: RECEIVE_ENTITIES,
+    payload: entities,
+  };
+}
+
 // // normalize data
 // const cardSchema = new schema.Entity('cards');
 // const decksSchema = new schema.Entity('decks', {

@@ -1,7 +1,7 @@
 import * as DecksActions from '../actions/decksActions';
 
 const initialState = {
-  data: [],
+  items: {},
   isLoading: false,
   error: null,
 };
@@ -21,6 +21,16 @@ export default function decksReducer(state = initialState, action) {
         isLoading: false,
         data: action.data,
       };
+    }
+    case DecksActions.RECEIVE_ENTITIES: {
+      const { entities } = action.payload;
+      if (entities && entities.decks) {
+        return {
+          ...state,
+          isLoading: false,
+          data: entities.decks,
+        };
+      }
     }
     case DecksActions.FETCH_DECKS_FAILED: {
       return {
