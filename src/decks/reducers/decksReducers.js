@@ -1,12 +1,13 @@
+import { fromJS } from 'immutable';
 import * as DecksActions from '../actions/decksActions';
 
-const initialState = {
-  items: {},
+const initialDecksState = {
+  decks: [],
   isLoading: false,
   error: null,
 };
 
-export default function decksReducer(state = initialState, action) {
+export default function decksReducer(state = initialDecksState, action) {
   switch (action.type) {
     case DecksActions.FETCH_DECKS_STARTED: {
       return {
@@ -18,8 +19,8 @@ export default function decksReducer(state = initialState, action) {
     case DecksActions.FETCH_DECKS_SUCCEEDED: {
       return {
         ...state,
+        decks: action.payload.decks,
         isLoading: false,
-        data: action.data,
       };
     }
     case DecksActions.RECEIVE_ENTITIES: {
@@ -28,7 +29,8 @@ export default function decksReducer(state = initialState, action) {
         return {
           ...state,
           isLoading: false,
-          data: entities.decks,
+          error: '',
+          decks: Object.values(entities.decks),
         };
       }
     }

@@ -14,7 +14,7 @@ class decksContainer extends Component {
   }
 
   render() {
-    console.log('in deck list', JSON.stringify(this.props.data));
+    console.log('in deck list', JSON.stringify(this.props.decks));
 
     if (this.props.isLoading) {
       return <div className="loading">Loading ...</div>;
@@ -25,20 +25,21 @@ class decksContainer extends Component {
         <div className="error" style={{ color: 'red' }}>
           ERROR:
           {' '}
-          {this.props.error}
+          {JSON.stringify(this.props.error)}
         </div>
       );
     }
     return (
       <div>
-        <DecksList decks={this.props.data} />
+        <DecksList decks={this.props.decks} />
+        
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  data: state.decksReducer.data,
+  decks: state.decksReducer.decks,
   isLoading: state.decksReducer.isLoading,
   error: state.decksReducer.error,
 });

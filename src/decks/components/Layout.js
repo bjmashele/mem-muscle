@@ -13,10 +13,11 @@ const Layout = () => {
   return (
     <div className="wrapper container">
       <div className="header">
-        <DecksController />
+        {/* <DecksController /> */}
         <hr />
       </div>
       <div className="box content">
+        Decks must be here
         <DecksContainer />
       </div>
 
