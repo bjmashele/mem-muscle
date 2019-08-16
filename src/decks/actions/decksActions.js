@@ -6,6 +6,9 @@ export const FETCH_DECKS_STARTED = 'FETCH_DECKS_STARTED';
 export const FETCH_DECKS_FAILED = 'FETCH_DECKS_FAILED';
 export const RECEIVE_ENTITIES = 'RECEIVE_ENTITIES';
 export const FETCH_DECKS_SUCCEEDED = 'FETCH_DECKS_SUCCEEDED';
+export const SET_CURRENT_DECK = 'SET_CURRENT_DECK';
+export const GET_CARDS = 'GET_CARDS';
+export const SET_CURRENT_CARDS = 'SET_CURRENT_CARDS';
 
 // normalize decks data
 
@@ -59,27 +62,28 @@ export const fetchDecks = () => (dispatch) => {
       error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message }),
     );
 };
-// // normalize data
-// const cardSchema = new schema.Entity('cards');
-// const decksSchema = new schema.Entity('decks', {
-//   cards: [cardSchema],
-// });
 
-// export function receiveEntities(entities) {
-//   return {
-//     type: RECEIVE_ENTITIES,
-//     payload: entities,
-//   };
-// }
+export function setDeck(deckID) {
+  return {
+    type: SET_CURRENT_DECK,
+    payload: {
+      deckID,
+    },
+  };
+}
 
-// export function fetchDecks() {
-//   return (dispatch, getState) => DecksApi.fetchDecks()
-//     .then((res) => {
-//       const decks = res.data;
-//       const normalizedData = normalize(decks, [decksSchema]);
-//       dispatch(normalizedData);
-//     })
-//     .catch((err) => {
-//       fetchDecksFailed(err);
-//     });
-// }
+export function setCurrentCards(cards, cardIDsFromDeck) {
+  const deckCards = cardIDsFromDeck.map(cardID => cards.filter(card => card.id == cardID)[0]);
+  console.log('currentCards action: ', deckCards);
+  return {
+    type: SET_CURRENT_CARDS,
+    payload: {
+      currentCards: deckCards,
+    },
+  };
+}
+export function getCards(deckID) {
+  return {
+    type: GET_CARDS,
+  };
+}

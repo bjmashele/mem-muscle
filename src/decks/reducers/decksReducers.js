@@ -3,8 +3,11 @@ import * as DecksActions from '../actions/decksActions';
 
 const initialDecksState = {
   decks: [],
+  cards: [],
+  currentCards: [],
   isLoading: false,
   error: null,
+  currentDeckID: null,
 };
 
 export default function decksReducer(state = initialDecksState, action) {
@@ -30,7 +33,9 @@ export default function decksReducer(state = initialDecksState, action) {
           ...state,
           isLoading: false,
           error: '',
+          currentDeckID: null,
           decks: Object.values(entities.decks),
+          cards: Object.values(entities.cards),
         };
       }
     }
@@ -39,6 +44,18 @@ export default function decksReducer(state = initialDecksState, action) {
         ...state,
         isLoading: false,
         error: action.error,
+      };
+    }
+    case DecksActions.SET_CURRENT_DECK: {
+      return {
+        ...state,
+        currentDeckID: action.payload.deckID,
+      };
+    }
+    case DecksActions.SET_CURRENT_CARDS: {
+      return {
+        ...state,
+        currentCards: action.payload.currentCards,
       };
     }
     default: {

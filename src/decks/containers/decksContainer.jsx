@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { stat } from 'fs';
 import DecksList from '../components/DecksList.jsx';
 import CardsShowCase from '../containers/CardsShowCase';
 import { data } from '../../mockData';
@@ -31,8 +33,7 @@ class decksContainer extends Component {
     }
     return (
       <div>
-        <DecksList decks={this.props.decks} />
-        
+        <DecksList decks={this.props.decks} cards={this.props.cards} />
       </div>
     );
   }
@@ -40,8 +41,10 @@ class decksContainer extends Component {
 
 const mapStateToProps = state => ({
   decks: state.decksReducer.decks,
+  cards: state.decksReducer.cards,
   isLoading: state.decksReducer.isLoading,
   error: state.decksReducer.error,
+  currentDeckID: state.decksReducer.currentDeckID,
 });
 
 const mapDispatchToProps = {
