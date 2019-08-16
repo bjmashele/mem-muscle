@@ -3,12 +3,32 @@ import { connect } from 'react-redux';
 
 class CardList extends Component {
   // randomize cards
+  constructor() {
+    super();
+    this.state = {
+      currentIndex: 0,
+      currentCard: '',
+      showAnswer: false,
+    };
+  }
+
+  nextIndex(currentIndex) {
+    this.setState({ currentIndex: currentIndex++ });
+  }
+
+  prevIndex(currentIndex) {
+    this.setState({ currentIndex: currentIndex-- });
+  }
+
+  showAnswer() {
+    this.setState({ showAnswer: !this.state.showAnswer });
+  }
 
   randomizeCards(cards) {
     let i = 0;
     let j = 0;
     let temp = null;
-    for (i - Array.length - 1; i > 0; i--) {
+    for (i = cards.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
       temp = cards[i];
       cards[i] = cards[j];
@@ -23,13 +43,32 @@ class CardList extends Component {
 
     return (
       <div className="card-list">
-        <ul>
-          {cards.map((card, index) => (
-            <li className="card-item cell" key={index}>
-              {card.front}
-            </li>
-          ))}
-        </ul>
+        <div
+          className="card-item box container"
+          style={{ marginTop: '20vh', width: '35vw', height: '35vh' }}
+        >
+          <div className="card-text" style={{ width: '25vw', height: '15vw' }}>
+            {this.state.showAnswer
+              ? cards[this.state.currentIndex].back
+              : cards[this.state.currentIndex].front}
+          </div>
+          {}
+          <div className="card-flip" style={{ paddingLeft: '10vw', paddingRight: '10vw' }}>
+            <i className="fa fa-repeat" aria-hidden="true" onClick={() => this.showAnswer()} />
+          </div>
+          <div className="controller" style={{ marginTop: '5vh' }}>
+            <div
+              className="button"
+              onClick={() => this.nextIndex(this.state.currentIndex)}
+              style={{ marginRight: '13.5vw' }}
+            >
+              Next
+            </div>
+            <div className="button" onClick={() => this.prevIndex(this.state.currentIndex)}>
+              Prev
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
