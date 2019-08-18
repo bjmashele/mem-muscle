@@ -13,6 +13,7 @@ class CardList extends Component {
   }
 
   nextIndex(currentIndex) {
+    // const newIndex = currentIndex + 1 < this.props.cards.length ? currentIndex++ : 0;
     this.setState({ showAnswer: false });
     this.setState({ currentIndex: currentIndex++ });
   }
@@ -21,8 +22,9 @@ class CardList extends Component {
     this.setState({ currentIndex: currentIndex-- });
   }
 
-  showAnswer() {
+  showAnswer(e) {
     this.setState({ showAnswer: !this.state.showAnswer });
+    e.stopPropagation();
   }
 
   randomizeCards(cards) {
@@ -49,16 +51,17 @@ class CardList extends Component {
           style={{ marginTop: '20vh', width: '35vw', height: '35vh' }}
         >
           <div className="card-text" style={{ width: '25vw', height: '5vw' }}>
-            {this.state.showAnswer
+            {/* {this.state.showAnswer
               ? cards[this.state.currentIndex].back
-              : cards[this.state.currentIndex].front}
+              : cards[this.state.currentIndex].front} */}
+            {cards[this.state.currentIndex].back}
           </div>
           {}
           <div className="card-flip" style={{ paddingLeft: '10vw', paddingRight: '10vw' }}>
             {/* <i className="fa fa-repeat" aria-hidden="true">
               flip
             </i> */}
-            <div className="flip" onClick={() => this.showAnswer()}>
+            <div className="flip" onClick={e => this.showAnswer()}>
               flip
             </div>
           </div>
