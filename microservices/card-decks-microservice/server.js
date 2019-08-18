@@ -31,10 +31,16 @@ mongoose
     process.exit();
   });
 
+// Routes
+
 // test route
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Card deck microservice' });
 });
+
+// api routes
+
+require('./app/routes/deck.routes.js')(app);
 
 // Start server
 
