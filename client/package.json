@@ -6,7 +6,6 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bulma": "^0.7.5",
-    "eslint": "^5.16.0",
     "immutable": "^4.0.0-rc.12",
     "normalizr": "^3.4.0",
     "react": "^16.3.2",
@@ -29,6 +28,7 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
