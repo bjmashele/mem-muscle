@@ -27,8 +27,9 @@ mongoose.Promise = global.Promise;
 
 // Connect to the database
 
+dbURL = "mongodb://bjmashele:imali7784@ds211368.mlab.com:11368/memrily";
 mongoose
-  .connect(dbConfig.url, {
+  .connect(dbURL, {
     useNewUrlParser: true
   })
   .then(() => {
