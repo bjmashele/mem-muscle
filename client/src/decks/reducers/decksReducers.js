@@ -46,18 +46,18 @@ export default function decksReducer(state = initialDecksState, action) {
         error: action.error,
       };
     }
-    case DecksActions.SET_CURRENT_DECK: {
-      return {
-        ...state,
-        currentDeckID: action.payload.deckID,
-      };
-    }
-    case DecksActions.SET_CURRENT_CARDS: {
-      return {
-        ...state,
-        currentCards: action.payload.currentCards,
-      };
-    }
+    // case DecksActions.SET_CURRENT_DECK: {
+    //   return {
+    //     ...state,
+    //     currentDeckID: action.payload.deckID,
+    //   };
+    // }
+    // case DecksActions.SET_CURRENT_CARDS: {
+    //   return {
+    //     ...state,
+    //     currentCards: action.payload.currentCards,
+    //   };
+    // }
     default: {
       return state;
     }

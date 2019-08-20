@@ -8,8 +8,8 @@ const API = 'http://localhost:3030/api';
 
 // const DECKS_API = `${API}/decks`;
 // Use json-server
-const DECKS_API = 'http://localhost:3006/api/decks';
-// const DECKS_API = 'api/decks';
+// const DECKS_API = 'http://localhost:3006/api/decks';
+const DECKS_API = 'api/decks';
 // Get card decks
 // const fetchDecks = () => HttpClient.get(DECKS_API);
 const fetchDecks = () => fetch(DECKS_API, {

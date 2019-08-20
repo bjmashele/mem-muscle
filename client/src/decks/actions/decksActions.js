@@ -57,7 +57,8 @@ export const fetchDecks = () => (dispatch) => {
   DecksApi.fetchDecks()
     .then(response => response.json())
     .then(
-      data => dispatch(receiveEntities(deckNormalizer(data))),
+      data => dispatch(fetchDecksSucceeded(data)),
+      // data => dispatch(receiveEntities(deckNormalizer(data))),
       error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message }),
     );
 };
