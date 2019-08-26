@@ -43,16 +43,16 @@ mongoose
 // Routes
 
 // test route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Card deck microservice" });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to Card deck microservice" });
+// });
 
 // api routes
 
 require("./api/routes/deck.routes.js")(app);
+//require("./api/routes/auth.routes.js")(app);
 
-// Start server
-
+//Start server
 app.listen(PORT, () => {
   console.log(`Card deck server is listening on port: ${PORT} `);
 });

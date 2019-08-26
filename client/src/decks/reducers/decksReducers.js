@@ -1,13 +1,13 @@
-import { fromJS } from 'immutable';
-import * as DecksActions from '../actions/decksActions';
+import { fromJS } from "immutable";
+import * as DecksActions from "../actions/decksActions";
 
 const initialDecksState = {
   decks: [],
   cards: [],
   currentCards: [],
   isLoading: false,
-  error: null,
-  currentDeckID: null,
+  error: " ",
+  currentDeckID: ""
 };
 
 export default function decksReducer(state = initialDecksState, action) {
@@ -16,14 +16,14 @@ export default function decksReducer(state = initialDecksState, action) {
       return {
         ...state,
         isLoading: true,
-        error: '',
+        error: ""
       };
     }
     case DecksActions.FETCH_DECKS_SUCCEEDED: {
       return {
         ...state,
         decks: action.payload.decks,
-        isLoading: false,
+        isLoading: false
       };
     }
     case DecksActions.RECEIVE_ENTITIES: {
@@ -32,10 +32,10 @@ export default function decksReducer(state = initialDecksState, action) {
         return {
           ...state,
           isLoading: false,
-          error: '',
-          currentDeckID: null,
+          error: "",
+          currentDeckID: "",
           decks: Object.values(entities.decks),
-          cards: Object.values(entities.cards),
+          cards: Object.values(entities.cards)
         };
       }
     }
@@ -43,7 +43,7 @@ export default function decksReducer(state = initialDecksState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.error,
+        error: action.error
       };
     }
     // case DecksActions.SET_CURRENT_DECK: {

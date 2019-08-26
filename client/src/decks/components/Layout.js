@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable implicit-arrow-linebreak */
-import React from 'react';
+import React from "react";
 
-import DeckList from './DecksList';
-import DecksContainer from '../containers/decksContainer';
-import CardsShowCase from '../containers/CardsShowCase';
-import './styles.css';
-import DecksController from './DecksController';
+import DeckList from "./DecksList";
+import DecksContainer from "../containers/DecksContainer";
+import CardsShowCase from "../containers/CardsShowCase";
+import "./styles.css";
+import DecksController from "./DecksController";
 
 const Layout = () => {
   const temp = [1, 2, 4];

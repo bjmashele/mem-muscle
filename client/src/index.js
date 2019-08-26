@@ -1,22 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 
-import App from './App';
-import Welcome from './auth/components/Welcome';
-import Signup from './auth/components/auth/Signup';
-import Decks from './decks/components/Decks.jsx';
-import CardList from './decks/components/CardList';
-import Signout from './auth/components/auth/Signout';
-import Signin from './auth/components/auth/Signin';
+import App from "./App";
+import Welcome from "./auth/components/Welcome";
+import Signup from "./auth/components/auth/Signup";
+import Decks from "./decks/components/Decks.jsx";
+import CardList from "./decks/components/CardList";
+import Signout from "./auth/components/auth/Signout";
+import Signin from "./auth/components/auth/Signin";
+import TestComponent from "./common/TestComponent";
 
 // styles
-import 'bulma/css/bulma.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bulma/css/bulma.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // initiate store
-import { configureStore } from './store/configureStore';
+import { configureStore } from "./store/configureStore";
 
 const store = configureStore();
 
@@ -41,5 +42,5 @@ ReactDOM.render(
       </App>
     </BrowserRouter>
   </Provider>,
-  document.querySelector('#root'),
+  document.querySelector("#root")
 );

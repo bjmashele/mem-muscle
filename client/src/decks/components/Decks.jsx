@@ -1,6 +1,6 @@
-import React from 'react';
-import requireAuth from '../../auth/components/requireAuth';
-import Layout from './Layout';
+import React from "react";
+import requireAuth from "../../auth/components/requireAuth";
+import Layout from "./Layout";
 
 const Decks = () => (
   <div>
