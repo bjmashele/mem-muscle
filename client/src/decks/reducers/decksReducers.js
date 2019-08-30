@@ -2,12 +2,10 @@ import { fromJS } from "immutable";
 import * as DecksActions from "../actions/decksActions";
 
 const initialDecksState = {
-  decks: [],
-  cards: [],
-  currentCards: [],
+  items: {},
   isLoading: false,
   error: " ",
-  currentDeckID: ""
+  currentDeckId: ""
 };
 
 export default function decksReducer(state = initialDecksState, action) {
@@ -22,20 +20,21 @@ export default function decksReducer(state = initialDecksState, action) {
     case DecksActions.FETCH_DECKS_SUCCEEDED: {
       return {
         ...state,
-        decks: action.payload.decks,
+        items: action.payload.decks,
         isLoading: false
       };
     }
     case DecksActions.RECEIVE_ENTITIES: {
       const { entities } = action.payload;
+
       if (entities && entities.decks) {
         return {
           ...state,
           isLoading: false,
+          entities: entities,
           error: "",
           currentDeckID: "",
-          decks: Object.values(entities.decks),
-          cards: Object.values(entities.cards)
+          items: entities.decks
         };
       }
     }
@@ -46,20 +45,21 @@ export default function decksReducer(state = initialDecksState, action) {
         error: action.error
       };
     }
-    // case DecksActions.SET_CURRENT_DECK: {
-    //   return {
-    //     ...state,
-    //     currentDeckID: action.payload.deckID,
-    //   };
-    // }
-    // case DecksActions.SET_CURRENT_CARDS: {
-    //   return {
-    //     ...state,
-    //     currentCards: action.payload.currentCards,
-    //   };
-    // }
+
     default: {
       return state;
     }
   }
 }
+
+const getCardsByDeckId = state => {
+  const { currentDeckId } = state.currentDeckId;
+
+  if (!currentDeckId || !state.decks.items[currentDeckId]) {
+    return [];
+  }
+
+  const cardIds = state.decks.items[currentDeckId].cards;
+
+  return cardIds.map(id => state.cards.items[id]);
+};

@@ -1,5 +1,6 @@
-import { normalize, schema } from "normalizr";
+//import { normalize, schema } from "normalizr";
 import { DecksApi } from "../../api/decksApi";
+import * as DeckNormalizer from "../normalizers/decksNormalizer.js";
 
 // Action types
 export const FETCH_DECKS_STARTED = "FETCH_DECKS_STARTED";
@@ -12,13 +13,13 @@ export const SET_CURRENT_CARDS = "SET_CURRENT_CARDS";
 
 // normalize decks data
 
-const card = new schema.Entity("cards");
-const deck = new schema.Entity("decks", {
-  cards: [card]
-});
+// const card = new schema.Entity("cards");
+// const deck = new schema.Entity("decks", {
+//   cards: [card]
+// });
 
-const deckList = [deck];
-const deckNormalizer = deckResult => normalize(deckResult, deckList);
+// const deckList = [deck];
+//const deckNormalizer = deckResult => normalize(deckResult, deckList);
 
 export function fetchDecksStarted() {
   return {
@@ -57,7 +58,7 @@ export const fetchDecks = () => dispatch => {
   DecksApi.fetchDecks()
     .then(response => response.json())
     .then(
-      data => dispatch(fetchDecksSucceeded(data)),
+      data => dispatch(receiveEntities(DeckNormalizer.normalizeDecks(data))),
       error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message })
     );
 };

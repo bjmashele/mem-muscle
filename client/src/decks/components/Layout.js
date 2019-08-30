@@ -16,12 +16,14 @@ const Layout = () => {
         {/* <DecksController /> */}
         <hr />
       </div>
-      <div className="box content">
-        Decks must be here
+      <div className="content">
+        <div className="title is-3" style={{ textAlign: "center" }}>
+          Card Decks
+        </div>
         <DecksContainer />
       </div>
 
-      <div className="box footer">Footer</div>
+      <div className="footer">Footer</div>
     </div>
   );
 };

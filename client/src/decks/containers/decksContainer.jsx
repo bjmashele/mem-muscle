@@ -30,15 +30,18 @@ class decksContainer extends Component {
     }
     return (
       <div>
-        <DecksList decks={this.props.decks} />
+        <DecksList
+          decks={this.props.decks}
+          currentDeckId={this.props.currentDeckId}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  decks: state.decksReducer.decks,
-
+  decks: Object.values(state.decksReducer.items),
+  currentDeckId: state.decksReducer.currentDeckId,
   isLoading: state.decksReducer.isLoading,
   error: state.decksReducer.error
 });

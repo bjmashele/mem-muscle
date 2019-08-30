@@ -7,7 +7,7 @@
     "bootstrap": "^4.3.1",
     "bulma": "^0.7.5",
     "immutable": "^4.0.0-rc.12",
-    "normalizr": "^3.4.0",
+    "normalizr": "^3.2.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",

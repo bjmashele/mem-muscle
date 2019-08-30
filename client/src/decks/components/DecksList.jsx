@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeckItem from "./DeckItem";
+import Deck from "./Deck";
 import CardList from "./CardList";
 import { Container, Row, Col } from "react-grid";
 
@@ -12,11 +12,19 @@ const cellStyle = {
 class DecksList extends Component {
   render() {
     const decks = this.props.decks;
-    //const { cards } = this.props.cards;
-    //const { currentDeckID } = this.props.currentDeckID;
+    // const { cards } = this.props.cards;
+    // const { currentDeckID } = this.props.currentDeckID;
 
     const renderDecks = () => (
-      <div>
+      <div className="container has-gutter-top-bottom">
+        <h3>Current Deck Id: {this.props.currentDeckId}</h3>
+        <div className="columns is-multiline">
+          {decks.slice(0, 5).map(deck => (
+            <div className="column is-4">
+              <Deck deck={deck} />
+            </div>
+          ))}
+        </div>
         {/* <ul className="menu-list">
           {decks.map((deck, index) => (
             <li className="deck" key={index}>
@@ -24,52 +32,44 @@ class DecksList extends Component {
             </li>
           ))}
         </ul> */}
-        <Container>
+        {/* <div className="rawdecks">{JSON.stringify(decks)}</div> */}
+        {/* <Container>
           <Row>
             <Col style={cellStyle}>
-              {decks[0].name}
-              {/* <DeckItem deck={decks[0]} cards={cards} /> */}
+              <Deck deck={decks[0]} />
             </Col>
             <Col style={cellStyle}>
-              {decks[1].name}
-              {/* <DeckItem deck={decks[1]} cards={cards} />{" "} */}
+              <Deck deck={decks[1]} />
             </Col>
             <Col style={cellStyle}>
-              {decks[2].name}
-              {/* <DeckItem deck={decks[2]} cards={cards} />{" "} */}
-            </Col>
-          </Row>
-
-          {/* <Row>
-            <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[3]} cards={cards} />{" "}
-            </Col>
-            <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[4]} cards={cards} />{" "}
-            </Col>
-            <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[5]} cards={cards} />{" "}
+              <Deck deck={decks[2]} />
             </Col>
           </Row>
 
           <Row>
             <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[6]} cards={cards} />{" "}
+              <Deck deck={decks[3]} />
             </Col>
             <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[7]} cards={cards} />{" "}
+              <Deck deck={decks[4]} />
             </Col>
             <Col style={cellStyle}>
-              {" "}
-              <DeckItem deck={decks[8]} cards={cards} />{" "}
+              <Deck deck={decks[5]} />
             </Col>
-          </Row> */}
-        </Container>
+          </Row>
+
+          <Row>
+            <Col style={cellStyle}>
+              <Deck deck={decks[6]} />
+            </Col>
+            <Col style={cellStyle}>
+              <Deck deck={decks[7]} />
+            </Col>
+            <Col style={cellStyle}>
+              <Deck deck={decks[8]} />
+            </Col>
+          </Row>
+        </Container> */}
       </div>
     );
     return renderDecks();
