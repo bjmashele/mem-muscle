@@ -5,7 +5,7 @@ const initialDecksState = {
   items: {},
   isLoading: false,
   error: " ",
-  currentDeckId: ""
+  currentDeckId: "abs"
 };
 
 export default function decksReducer(state = initialDecksState, action) {
@@ -45,7 +45,12 @@ export default function decksReducer(state = initialDecksState, action) {
         error: action.error
       };
     }
-
+    case DecksActions.SET_CURRENT_DECK_ID: {
+      return {
+        ...state,
+        currentDeckId: action.payload.id
+      };
+    }
     default: {
       return state;
     }

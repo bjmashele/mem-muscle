@@ -7,7 +7,7 @@ export const FETCH_DECKS_STARTED = "FETCH_DECKS_STARTED";
 export const FETCH_DECKS_FAILED = "FETCH_DECKS_FAILED";
 export const RECEIVE_ENTITIES = "RECEIVE_ENTITIES";
 export const FETCH_DECKS_SUCCEEDED = "FETCH_DECKS_SUCCEEDED";
-export const SET_CURRENT_DECK = "SET_CURRENT_DECK";
+export const SET_CURRENT_DECK_ID = "SET_CURRENT_DECK_ID";
 export const GET_CARDS = "GET_CARDS";
 export const SET_CURRENT_CARDS = "SET_CURRENT_CARDS";
 
@@ -63,11 +63,11 @@ export const fetchDecks = () => dispatch => {
     );
 };
 
-export function setDeck(deckID) {
+export function setCurrentDeckId(id) {
   return {
-    type: SET_CURRENT_DECK,
+    type: SET_CURRENT_DECK_ID,
     payload: {
-      deckID
+      id
     }
   };
 }

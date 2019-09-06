@@ -15,6 +15,9 @@ class decksContainer extends Component {
     this.props.fetchDecks();
   }
 
+  // onChooseDeckToStudy = id => {
+  //   this.props.dispatch({ type: "SET_CURRENT_DECK_ID", payload: id });
+  // };
   render() {
     if (this.props.isLoading) {
       return <div className="loading">Loading ...</div>;
@@ -32,6 +35,7 @@ class decksContainer extends Component {
       <div>
         <DecksList
           decks={this.props.decks}
+          onChooseDeckToStudy={this.props.onChooseDeckToStudy}
           currentDeckId={this.props.currentDeckId}
         />
       </div>
@@ -46,9 +50,17 @@ const mapStateToProps = state => ({
   error: state.decksReducer.error
 });
 
-const mapDispatchToProps = {
-  fetchDecks: decksActions.fetchDecks
-};
+const mapDispatchToProps = dispatch => ({
+  fetchDecks: () => dispatch(decksActions.fetchDecks()),
+  onChooseDeckToStudy: id => dispatch(decksActions.setCurrentDeckId(id)),
+  dispatch
+});
+
+// const mapDispatchToProps = dispatch => ({
+//   fetchDecks: decksActions.fetchDecks,
+//   setCurrentDeckId: decksActions.setCurrentDeckId,
+//   dispatch: dispatch
+// });
 
 export default connect(
   mapStateToProps,

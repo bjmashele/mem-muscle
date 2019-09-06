@@ -12,14 +12,16 @@ const cellStyle = {
 class DecksList extends Component {
   render() {
     const decks = this.props.decks;
+    //const onChooseDeckToStudy = this.props.onChooseDeckToStudy;
     // const { cards } = this.props.cards;
-    // const { currentDeckID } = this.props.currentDeckID;
+    const currentDeckId = this.props.currentDeckId;
 
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
-        <h3>Current Deck Id: {this.props.currentDeckId}</h3>
+        {/* <h3>Current Deck Id: {JSON.stringify(onChooseDeckToStudy("qbc"))}</h3> */}
+        <h3>Current DeckID: {currentDeckId}</h3>
         <div className="columns is-multiline">
-          {decks.slice(0, 5).map(deck => (
+          {decks.slice(0, 8).map(deck => (
             <div className="column is-4">
               <Deck deck={deck} />
             </div>
