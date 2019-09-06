@@ -16,11 +16,11 @@ class Deck extends Component {
       >
         <ul>
           <li>
-            {/* <Link to="/study"> */}
-            {this.props.deck.name}
-            <hr />
-            {this.props.deck.id}
-            {/* </Link> */}
+            <Link to="/study">
+              {this.props.deck.name}
+              <hr />
+              {this.props.deck.id}
+            </Link>
           </li>
         </ul>
       </div>
