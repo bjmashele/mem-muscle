@@ -6,7 +6,11 @@ const initialDecksState = {
   isLoading: false,
   error: " ",
   currentDeckId: "abs",
-  currentCards: ["a", "b", "c"]
+  currentCards: [
+    { front: "a", back: "1" },
+    { front: "b", back: "2" },
+    { front: "c", back: "3" }
+  ]
 };
 
 export default function decksReducer(state = initialDecksState, action) {

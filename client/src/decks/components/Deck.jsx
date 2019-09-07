@@ -16,7 +16,7 @@ class Deck extends Component {
       >
         <ul>
           <li>
-            <Link to="/study">
+            <Link to="/card-list">
               {this.props.deck.name}
               <hr />
               {this.props.deck.id}

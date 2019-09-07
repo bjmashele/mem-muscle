@@ -73,10 +73,11 @@ export function setCurrentDeckId(id) {
 }
 
 export function setCurrentCards(cards, cardIDsFromDeck) {
-  const deckCards = cardIDsFromDeck.map(
+  console.log("currentCards action: ", cardIDsFromDeck);
+  let deckCards = cardIDsFromDeck.map(
     cardID => cards.filter(card => card.id == cardID)[0]
   );
-  console.log("currentCards action: ", deckCards);
+
   return {
     type: SET_CURRENT_CARDS,
     payload: {

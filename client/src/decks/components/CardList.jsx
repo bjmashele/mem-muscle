@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as decksActions from "../actions/decksActions";
 
 class CardList extends Component {
   // randomize cards
@@ -7,25 +8,58 @@ class CardList extends Component {
     super();
     this.state = {
       currentIndex: 0,
-      currentCard: '',
-      showAnswer: false,
+      currentCard: "",
+      showAnswer: false
     };
   }
 
-  nextIndex(currentIndex) {
+  componentDidMount() {
+    {
+      console.log(
+        "CardsByDeckID",
+        JSON.stringify(this.props.decks[this.props.currentDeckId].cards)
+      );
+    }
+
+    {
+      console.log("All cards", JSON.stringify(this.props.cards));
+    }
+    this.props.setCurrentCards(
+      this.props.cards,
+      this.props.decks[this.props.currentDeckId].cards
+    );
+  }
+
+  nextIndex = () => {
     // const newIndex = currentIndex + 1 < this.props.cards.length ? currentIndex++ : 0;
-    this.setState({ showAnswer: false });
-    this.setState({ currentIndex: currentIndex++ });
-  }
+    const totalCurrentCards = this.props.currentCards.length;
+    const currentIndex =
+      this.state.currentIndex + 1 > totalCurrentCards - 1
+        ? 0
+        : this.state.currentIndex + 1;
+    this.setState(state => ({
+      currentIndex: currentIndex,
+      showAnswer: false
+    }));
+  };
 
-  prevIndex(currentIndex) {
-    this.setState({ currentIndex: currentIndex-- });
-  }
+  prevIndex = () => {
+    const totalCurrentCards = this.props.currentCards.length;
+    const currentIndex =
+      this.state.currentIndex - 1 < 0
+        ? totalCurrentCards - 1
+        : this.state.currentIndex - 1;
+    this.setState(state => ({
+      currentIndex: currentIndex,
+      showAnswer: false
+    }));
+  };
 
-  showAnswer(e) {
-    this.setState({ showAnswer: !this.state.showAnswer });
-    e.stopPropagation();
-  }
+  flipCard = () => {
+    this.setState(state => ({
+      showAnswer: !this.state.showAnswer
+    }));
+  };
 
   randomizeCards(cards) {
     let i = 0;
@@ -41,39 +75,42 @@ class CardList extends Component {
   }
 
   render() {
-    const { cards } = this.props;
+    let cards = this.props.currentCards;
     // cards = this.randomizeCards(cards);
 
     return (
       <div className="card-list">
+        <h3>Current index: {this.state.currentIndex}</h3>
         <div
           className="card-item box container"
-          style={{ marginTop: '20vh', width: '35vw', height: '35vh' }}
+          style={{ marginTop: "20vh", width: "35vw", height: "35vh" }}
         >
-          <div className="card-text" style={{ width: '25vw', height: '5vw' }}>
-            {/* {this.state.showAnswer
+          <div className="card-text" style={{ width: "25vw", height: "5vw" }}>
+            {this.state.showAnswer
               ? cards[this.state.currentIndex].back
-              : cards[this.state.currentIndex].front} */}
-            {cards[this.state.currentIndex].back}
+              : cards[this.state.currentIndex].front}
           </div>
           {}
-          <div className="card-flip" style={{ paddingLeft: '10vw', paddingRight: '10vw' }}>
+          <div
+            className="card-flip"
+            style={{ paddingLeft: "10vw", paddingRight: "10vw" }}
+          >
             {/* <i className="fa fa-repeat" aria-hidden="true">
               flip
             </i> */}
-            <div className="flip" onClick={e => this.showAnswer()}>
+            <div className="flip" onClick={this.flipCard}>
               flip
             </div>
           </div>
-          <div className="controller" style={{ marginTop: '5vh' }}>
+          <div className="controller" style={{ marginTop: "5vh" }}>
             <div
               className="button"
-              onClick={() => this.nextIndex(this.state.currentIndex)}
-              style={{ marginRight: '13.5vw' }}
+              onClick={this.nextIndex}
+              style={{ marginRight: "13.5vw" }}
             >
               Next
             </div>
-            <div className="button" onClick={() => this.prevIndex(this.state.currentIndex)}>
+            <div className="button" onClick={this.prevIndex}>
               Prev
             </div>
           </div>
@@ -82,10 +119,21 @@ class CardList extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentCards: (cards, cardIDs) =>
+      dispatch(decksActions.setCurrentCards(cards, cardIDs)),
+    dispatch
+  };
+};
 const mapStateToProps = state => ({
-  cards: state.decksReducer.currentCards,
+  cards: Object.values(state.decksReducer.entities.cards),
+  decks: state.decksReducer.entities.decks,
+  currentDeckId: state.decksReducer.currentDeckId,
+  currentCards: state.decksReducer.currentCards
 });
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps
 )(CardList);
