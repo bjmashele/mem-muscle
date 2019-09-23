@@ -3,4 +3,5 @@ module.exports = app => {
 
   //Card deck routes
   app.get("/api/decks", decks.findAll);
+  app.post("/api/decks", decks.createDeck);
 };

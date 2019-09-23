@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -6,17 +6,18 @@ const { Schema } = mongoose;
 const cardSchema = new Schema({
   id: mongoose.Schema.Types.ObjectId,
   front: String,
-  back: String,
+  back: String
 });
 
 const deckSchema = new Schema({
   name: String,
   id: mongoose.Schema.Types.ObjectId,
-  cards: [cardSchema],
+  createdAt: Date,
+  cards: [cardSchema]
 });
 
 // Create the model class
-const ModelClass = mongoose.model('Deck', deckSchema);
+const ModelClass = mongoose.model("Deck", deckSchema);
 
 // Export the model
 module.exports = ModelClass;
