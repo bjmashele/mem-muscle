@@ -5,13 +5,14 @@ const { Schema } = mongoose;
 // Define our model
 const cardSchema = new Schema({
   id: mongoose.Schema.Types.ObjectId,
-  front: String,
-  back: String
+  question: String,
+  answer: String
 });
 
 const deckSchema = new Schema({
-  name: String,
+  title: String,
   id: mongoose.Schema.Types.ObjectId,
+  description: String,
   createdAt: Date,
   cards: [cardSchema]
 });
