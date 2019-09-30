@@ -20,7 +20,7 @@ exports.createDeck = async function(req, res, next) {
   };
   var deck = {
     title: req.body.title,
-    description: req.body.description,
+    //description: req.body.description,
     cards: card
   };
 

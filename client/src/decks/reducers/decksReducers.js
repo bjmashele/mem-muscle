@@ -2,7 +2,8 @@ import { fromJS } from "immutable";
 import * as DecksActions from "../actions/decksActions";
 
 const initialDecksState = {
-  items: {},
+  items: [],
+  decks: [],
   isLoading: false,
   error: " ",
   currentDeckId: "abs",
@@ -39,7 +40,7 @@ export default function decksReducer(state = initialDecksState, action) {
           entities: entities,
           error: "",
           currentDeckID: "",
-          items: entities.decks
+          items: Object.values(entities.decks.undefined)
         };
       }
     }
@@ -60,6 +61,17 @@ export default function decksReducer(state = initialDecksState, action) {
       return {
         ...state,
         currentCards: action.payload.currentCards
+      };
+    }
+    case DecksActions.ADD_DECK_STARTED: {
+      return {
+        ...state
+      };
+    }
+    case DecksActions.ADD_DECK_SUCCEEDED: {
+      return {
+        ...state,
+        decks: state.decks.concat(action.payload.deck)
       };
     }
     default: {

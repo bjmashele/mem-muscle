@@ -11,13 +11,9 @@ import { HttpClient } from "./httpClient";
 const DECKS_API = "http://localhost:5000/api/decks";
 //const DECKS_API = "/api/decks";
 // Get card decks
-// const fetchDecks = () => HttpClient.get(DECKS_API);
-const fetchDecks = () =>
-  fetch(DECKS_API, {
-    method: "GET"
-  });
-// test
-// const assets = fetchDecks().then(res => console.log('In decks API: ', res.data));
-const DecksApi = { fetchDecks };
+const fetchDecks = () => HttpClient.get(DECKS_API);
+const addDeck = data => HttpClient.post(DECKS_API, data);
+
+const DecksApi = { fetchDecks, addDeck };
 
 export { DecksApi };

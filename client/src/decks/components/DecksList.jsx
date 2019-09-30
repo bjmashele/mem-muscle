@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Deck from "./Deck";
 import CardList from "./CardList";
+import AddDeckForm from "./AddDeckForm";
+import TestModal from "./TestModal";
 import { Container, Row, Col } from "react-grid";
 
 const cellStyle = {
@@ -10,6 +12,39 @@ const cellStyle = {
 };
 
 class DecksList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalState: " "
+    };
+  }
+  toggleModal = () => {
+    const modalProp = () => {
+      if (this.state.modalState == " ") {
+        return "is-active";
+      } else {
+        return " ";
+      }
+    };
+    this.setState({ modalState: modalProp() });
+  };
+  showModal() {
+    this.setState({ modalState: "is-active" });
+  }
+
+  renderModal() {
+    if (this.state.modalState) {
+      return (
+        <AddDeckForm
+          onToggleModal={() => this.toggleModal}
+          modalState={this.state.modalState}
+        />
+      );
+    } else {
+      return "";
+    }
+  }
+
   render() {
     const decks = this.props.decks;
     //const onChooseDeckToStudy = this.props.onChooseDeckToStudy;
@@ -18,8 +53,13 @@ class DecksList extends Component {
 
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
-        {/* <h3>Current Deck Id: {JSON.stringify(onChooseDeckToStudy("qbc"))}</h3> */}
         <h3>Current DeckID: {currentDeckId}</h3>
+        <button
+          className="button is-primary"
+          onClick={() => this.toggleModal()}
+        >
+          Add Deck
+        </button>
         <div className="columns is-multiline">
           {decks.slice(0, 8).map(deck => (
             <div className="column is-4">
@@ -27,51 +67,7 @@ class DecksList extends Component {
             </div>
           ))}
         </div>
-        {/* <ul className="menu-list">
-          {decks.map((deck, index) => (
-            <li className="deck" key={index}>
-              <DeckItem deck={deck} cards={cards} />
-            </li>
-          ))}
-        </ul> */}
-        {/* <div className="rawdecks">{JSON.stringify(decks)}</div> */}
-        {/* <Container>
-          <Row>
-            <Col style={cellStyle}>
-              <Deck deck={decks[0]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[1]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[2]} />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col style={cellStyle}>
-              <Deck deck={decks[3]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[4]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[5]} />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col style={cellStyle}>
-              <Deck deck={decks[6]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[7]} />
-            </Col>
-            <Col style={cellStyle}>
-              <Deck deck={decks[8]} />
-            </Col>
-          </Row>
-        </Container> */}
+        <div className="add-deck-modal">{this.renderModal()}</div>
       </div>
     );
     return renderDecks();

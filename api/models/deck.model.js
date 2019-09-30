@@ -12,7 +12,7 @@ const cardSchema = new Schema({
 const deckSchema = new Schema({
   title: String,
   id: mongoose.Schema.Types.ObjectId,
-  description: String,
+  //description: String,
   createdAt: Date,
   cards: [cardSchema]
 });
