@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
+const ObjectID = require("bson-objectid");
 
 const { Schema } = mongoose;
 
 // Define our model
 const cardSchema = new Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: Schema.Types.ObjectId,
   question: String,
   answer: String
 });
 
 const deckSchema = new Schema({
   title: String,
-  id: mongoose.Schema.Types.ObjectId,
+  id: Schema.Types.ObjectId,
   //description: String,
   createdAt: Date,
   cards: [cardSchema]

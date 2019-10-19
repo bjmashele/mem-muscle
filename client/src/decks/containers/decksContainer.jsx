@@ -44,7 +44,7 @@ class decksContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  decks: state.decksReducer.items,
+  decks: state.decksReducer.decks,
   currentDeckId: state.decksReducer.currentDeckId,
   isLoading: state.decksReducer.isLoading,
   error: state.decksReducer.error

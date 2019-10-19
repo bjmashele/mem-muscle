@@ -3,7 +3,7 @@ import * as DecksActions from "../actions/decksActions";
 
 const initialDecksState = {
   items: [],
-  decks: [],
+  decks: {},
   isLoading: false,
   error: " ",
   currentDeckId: "abs",
@@ -40,7 +40,8 @@ export default function decksReducer(state = initialDecksState, action) {
           entities: entities,
           error: "",
           currentDeckID: "",
-          items: Object.values(entities.decks.undefined)
+          decks: Object.values(entities.decks),
+          cards: Object.values(entities.cards)
         };
       }
     }

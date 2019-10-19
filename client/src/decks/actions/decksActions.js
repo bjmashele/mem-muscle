@@ -15,6 +15,10 @@ export const ADD_DECK_STARTED = "ADD_DECK_STARTED";
 export const ADD_DECK_SUCCEEDED = "ADD_DECK_SUCCEEDED";
 export const ADD_DECK_FAILED = "ADD_DECK_FAILED";
 
+export const ADD_CARDS_STARTED = "ADD_CARD_STARTED";
+export const ADD_CARDS_SUCCEEDED = "ADD_CARD_SUCCEEDED";
+export const ADD_CARDS_FAILED = "ADD_CARDS_FAILED";
+
 export function fetchDecksStarted() {
   return {
     type: FETCH_DECKS_STARTED
@@ -46,16 +50,21 @@ export function receiveEntities(entities) {
   };
 }
 
-export const fetchDecks = () => dispatch => {
-  dispatch(fetchDecksStarted());
+export function fetchDecks() {
+  return (dispatch, getState) => {
+    dispatch(fetchDecksStarted());
 
-  DecksApi.fetchDecks()
-    //.then(response => response.json())
-    .then(
-      data => dispatch(receiveEntities(DeckNormalizer.normalizeDecks(data))),
-      error => dispatch({ type: FETCH_DECKS_FAILED, error: error.message })
-    );
-};
+    return DecksApi.fetchDecks()
+      .then(resp => {
+        const decks = resp.data;
+        const normalizedData = DeckNormalizer.normalizeDecks(decks);
+        dispatch(receiveEntities(normalizedData));
+      })
+      .catch(err => {
+        dispatch({ type: FETCH_DECKS_FAILED, error: err.message });
+      });
+  };
+}
 
 export function setCurrentDeckId(id) {
   return {
@@ -66,10 +75,16 @@ export function setCurrentDeckId(id) {
   };
 }
 
-export function setCurrentCards(cards, cardIDsFromDeck) {
-  console.log("currentCards action: ", cardIDsFromDeck);
-  let deckCards = cardIDsFromDeck.map(
-    cardID => cards.filter(card => card.id == cardID)[0]
+export function setCurrentCards(decks, cards, currentDeckId) {
+  let deckCardIds = () => {
+    const deck = decks.filter(deck => deck.id == currentDeckId);
+    return deck.cards;
+  };
+
+  const cardIds = deckCardIds();
+
+  let deckCards = cardIds.map(cardID =>
+    cards.filter(card => card.id == cardID)
   );
 
   return {
@@ -113,4 +128,36 @@ export const addDeck = formProps => dispatch => {
   dispatch(addDeckStarted);
 
   DecksApi.addDeck(formProps).then(res => dispatch(addDeckSucceeded(res.data)));
+};
+
+export function addCardsStarted() {
+  return {
+    type: ADD_CARDS_STARTED
+  };
+}
+
+export function addCardsFailed(error) {
+  return {
+    type: ADD_CARDS_FAILED,
+    payload: {
+      error: error || "Unexpected Error While Adding Deck"
+    }
+  };
+}
+
+export function addCardsSucceeded(data) {
+  return {
+    type: ADD_CARDS_SUCCEEDED,
+    payload: {
+      deck: data
+    }
+  };
+}
+
+export const addCards = formProps => dispatch => {
+  dispatch(addCardsStarted);
+
+  DecksApi.addCards(formProps).then(res =>
+    dispatch(addCardsSucceeded(res.data))
+  );
 };

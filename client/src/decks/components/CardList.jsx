@@ -14,19 +14,10 @@ class CardList extends Component {
   }
 
   componentDidMount() {
-    {
-      console.log(
-        "CardsByDeckID",
-        JSON.stringify(this.props.decks[this.props.currentDeckId].cards)
-      );
-    }
-
-    {
-      console.log("All cards", JSON.stringify(this.props.cards));
-    }
     this.props.setCurrentCards(
+      this.props.decks,
       this.props.cards,
-      this.props.decks[this.props.currentDeckId].cards
+      this.props.currentDeckId
     );
   }
 
@@ -120,16 +111,16 @@ class CardList extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, state) => {
   return {
-    setCurrentCards: (cards, cardIDs) =>
-      dispatch(decksActions.setCurrentCards(cards, cardIDs)),
+    setCurrentCards: (decks, cards, currentDeckId) =>
+      dispatch(decksActions.setCurrentCards(decks, cards, currentDeckId)),
     dispatch
   };
 };
 const mapStateToProps = state => ({
-  cards: Object.values(state.decksReducer.entities.cards),
-  decks: state.decksReducer.entities.decks,
+  cards: state.decksReducer.cards,
+  decks: state.decksReducer.decks,
   currentDeckId: state.decksReducer.currentDeckId,
   currentCards: state.decksReducer.currentCards
 });

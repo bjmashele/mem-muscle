@@ -14,13 +14,14 @@ class Deck extends Component {
         style={{ textAlign: "center", width: "20vw", height: "20vh" }}
         onClick={() => this.props.setCurrentDeckId(this.props.deck.id)}
       >
-        {console.log("Deck ID: ", this.props.deck.id)}
         <ul>
           <li>
+            {this.props.deck.title}
+            <hr />
+            Cards: {this.props.deck.cards.length}
+            <br />
             <Link to="/card-list">
-              {this.props.deck.name}
-              <hr />
-              {this.props.deck.id}
+              <span> Study Deck</span>
             </Link>
           </li>
         </ul>

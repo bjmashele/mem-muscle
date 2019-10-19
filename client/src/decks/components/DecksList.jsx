@@ -53,13 +53,16 @@ class DecksList extends Component {
 
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
-        <h3>Current DeckID: {currentDeckId}</h3>
-        <button
-          className="button is-primary"
-          onClick={() => this.toggleModal()}
+        {/* <button
+          className="button is-warning"
+          // onClick={() => this.toggleModal()}
+          style={{
+            marginLeft: "85vw",
+            marginBottom: "5vh"
+          }}
         >
           Add Deck
-        </button>
+        </button> */}
         <div className="columns is-multiline">
           {decks.slice(0, 8).map(deck => (
             <div className="column is-4">
@@ -67,7 +70,7 @@ class DecksList extends Component {
             </div>
           ))}
         </div>
-        <div className="add-deck-modal">{this.renderModal()}</div>
+        {/* <div className="add-deck-modal">{this.renderModal()}</div> */}
       </div>
     );
     return renderDecks();
