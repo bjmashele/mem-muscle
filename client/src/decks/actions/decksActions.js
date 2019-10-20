@@ -77,15 +77,22 @@ export function setCurrentDeckId(id) {
 
 export function setCurrentCards(decks, cards, currentDeckId) {
   let deckCardIds = () => {
-    const deck = decks.filter(deck => deck.id == currentDeckId);
-    return deck.cards;
+    const deckById = decks.filter(deck => {
+      return deck.id === currentDeckId;
+    });
+    // console.log("deck by id: ", JSON.stringify(deckById));
+    // console.log("deck by id:cards ", deckById[0].cards);
+
+    return deckById[0].cards;
   };
 
+  console.log("card ids", deckCardIds());
+  console.log("All cards:", cards);
   const cardIds = deckCardIds();
 
-  let deckCards = cardIds.map(cardID =>
-    cards.filter(card => card.id == cardID)
-  );
+  let deckCards = cards.filter(card => {
+    return cardIds.includes(card.id);
+  });
 
   return {
     type: SET_CURRENT_CARDS,

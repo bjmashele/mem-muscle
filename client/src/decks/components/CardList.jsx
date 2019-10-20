@@ -65,18 +65,46 @@ class CardList extends Component {
     return cards;
   }
 
+  renderPrevNextCardControls() {
+    return (
+      <div className="controller">
+        <div
+          className="button"
+          style={{ marginRight: "130px" }}
+          onClick={this.nextIndex}
+        >
+          Next
+        </div>
+        <div className="button" onClick={this.prevIndex}>
+          Prev
+        </div>
+      </div>
+    );
+  }
   render() {
     let cards = this.props.currentCards;
     // cards = this.randomizeCards(cards);
 
     return (
       <div className="card-list">
-        <h3>Current index: {this.state.currentIndex}</h3>
         <div
           className="card-item box container"
-          style={{ marginTop: "20vh", width: "35vw", height: "35vh" }}
+          style={{
+            marginTop: "20vh",
+            width: "35vw",
+            height: "35vh",
+            zIndex: 5
+          }}
         >
-          <div className="card-text" style={{ width: "25vw", height: "5vw" }}>
+          <div
+            className="card-text"
+            style={{
+              height: "20vw",
+              textAlign: "center",
+              verticalAlign: "middle",
+              lineHeight: "25vh"
+            }}
+          >
             {this.state.showAnswer
               ? cards[this.state.currentIndex].back
               : cards[this.state.currentIndex].front}
@@ -84,27 +112,22 @@ class CardList extends Component {
           {}
           <div
             className="card-flip"
-            style={{ paddingLeft: "10vw", paddingRight: "10vw" }}
+            style={{ paddingLeft: "15vw", paddingRight: "15vw" }}
           >
             {/* <i className="fa fa-repeat" aria-hidden="true">
               flip
             </i> */}
             <div className="flip" onClick={this.flipCard}>
-              flip
+              <i
+                className="fa fa-repeat"
+                style={{ fontSize: "35px", color: "gold" }}
+                aria-hidden="true"
+              ></i>
             </div>
           </div>
-          <div className="controller" style={{ marginTop: "5vh" }}>
-            <div
-              className="button"
-              onClick={this.nextIndex}
-              style={{ marginRight: "13.5vw" }}
-            >
-              Next
-            </div>
-            <div className="button" onClick={this.prevIndex}>
-              Prev
-            </div>
-          </div>
+        </div>
+        <div className="container" style={{ marginTop: "2vh", width: "25vw" }}>
+          {this.renderPrevNextCardControls()}
         </div>
       </div>
     );
