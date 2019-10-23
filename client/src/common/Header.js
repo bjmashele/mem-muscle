@@ -1,30 +1,44 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Header extends Component {
   renderLinks() {
     if (this.props.authenticated) {
       return (
-        <div className="navbar-end">
-          <a className="navbar-item button is-dark" style={{marginRight:"10px"}}>
-          <Link to="/signout">Sign Out</Link>
-          </a>
-          {/* <a className="navbar-item button is-light">
-          <Link to="/feature">Feature</Link>
-          </a> */}
+        <div className="navbar-item">
+          <div className="buttons">
+            <a className="button is-dark">
+              <Link to="/signout">Sign Out</Link>
+            </a>
+          </div>
         </div>
       );
     } else {
       return (
-        <div className="navbar-end">
-          <a className="navbar-item button is-dark" style={{marginRight:"10px"}}>
-          <Link to="/signup">Sign Up</Link>
-          </a>
-          <a className="navbar-item button is-light">
-          <Link to="/signin">Sign In</Link>
-          </a>
+        <div className="navbar-item">
+          <div className="buttons">
+            <a>
+              <Link
+                to="/signup"
+                style={{
+                  color: "#1b120f",
+                  fontWeight: "bold",
+                  paddingRight: "10px"
+                }}
+              >
+                Sign Up
+              </Link>
+            </a>
+            <a>
+              <Link
+                to="/signin"
+                style={{ color: "#1b120f", fontWeight: "bold" }}
+              >
+                Sign In
+              </Link>
+            </a>
+          </div>
         </div>
       );
     }
@@ -32,22 +46,23 @@ class Header extends Component {
 
   render() {
     return (
-        <div>
-      <nav className="navbar is-warning">
-          <div className="cont" style={{paddingTop:"8px"}}>
+      <div className="container" style={{ width: "100vw" }}>
+        <nav
+          className="navbar is-warning"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div className="navbar-brand">
+            <a className="navbar-item">
+              <Link to="/">Memrily</Link>
+            </a>
+          </div>
           <div className="navbar-menu">
-              <div className="navbar-start">
-                  <a className="navbar-item">
-                      <Link to="/">Memrily</Link>
-                  </a>
-               </div> 
-              <div className="navss">
-                {this.renderLinks()}
-             </div>
+            <div class="navbar-start"></div>
+            <div className="navbar-end"></div>
+            {this.renderLinks()}
           </div>
-          </div>
-      
-      </nav>
+        </nav>
       </div>
     );
   }

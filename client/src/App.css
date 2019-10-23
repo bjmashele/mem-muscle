@@ -1,0 +1,9 @@
+ul {
+  list-style-type: none;
+}
+
+.bg-image {
+  background-image: url("./assets/muscle2.jpeg");
+  background-size: contain;
+  background-repeat: "no-repeat";
+}

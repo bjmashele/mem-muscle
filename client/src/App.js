@@ -1,8 +1,8 @@
-import React from 'react';
-import Header from './common/Header';
+import React from "react";
+import Header from "./common/Header";
 
 export default ({ children }) => (
-  <div>
+  <div className="container" style={{ minHeight: "85vh" }}>
     <Header />
 
     {children}

@@ -25,9 +25,8 @@ class decksContainer extends Component {
 
     if (this.props.error) {
       return (
-        <div className="error" style={{ color: "red" }}>
-          ERROR
-          {/* ERROR: {JSON.stringify(this.props.error)} */}
+        <div className="error" style={{ color: "red", textAlign: "center" }}>
+          ERROR WHILE FETCHING DECKS FROM THE SERVER
         </div>
       );
     }

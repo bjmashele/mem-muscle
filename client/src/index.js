@@ -14,6 +14,8 @@ import CardCollection from "./decks/components/CardCollection";
 import TestComponent from "./common/TestComponent";
 
 // styles
+
+import "./App.css";
 import "bulma/css/bulma.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 

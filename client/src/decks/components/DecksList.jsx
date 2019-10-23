@@ -42,12 +42,11 @@ class DecksList extends Component {
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
         <button
-          className="button is-warning"
+          className="button is-dark  is-rounded"
           onClick={() => this.toggleModal()}
           style={{
-            marginLeft: "75vw",
-            marginBottom: "5vh",
-            radius: "100%"
+            marginLeft: "55vw",
+            marginBottom: "5vh"
           }}
         >
           Add Deck
