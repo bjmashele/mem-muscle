@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as decksActions from "../actions/decksActions";
+import AddCardForm from "./AddCardForm";
 
 class CardList extends Component {
   // randomize cards
@@ -9,7 +10,8 @@ class CardList extends Component {
     this.state = {
       currentIndex: 0,
       currentCard: "",
-      showAnswer: false
+      showAnswer: false,
+      modalState: ""
     };
   }
 
@@ -21,6 +23,19 @@ class CardList extends Component {
     );
   }
 
+  toggleModal = () => {
+    const modalProp = () => {
+      if (this.state.modalState == " ") {
+        return "is-active";
+      } else {
+        return " ";
+      }
+    };
+    this.setState({ modalState: modalProp() });
+  };
+  showModal() {
+    this.setState({ modalState: "is-active" });
+  }
   nextIndex = () => {
     // const newIndex = currentIndex + 1 < this.props.cards.length ? currentIndex++ : 0;
     const totalCurrentCards = this.props.currentCards.length;
@@ -96,6 +111,15 @@ class CardList extends Component {
             zIndex: 5
           }}
         >
+          <button
+            className="button is-warning"
+            onClick={() => this.toggleModal()}
+            style={{
+              paddingBottom: "5vh"
+            }}
+          >
+            Add Card
+          </button>
           <div
             className="card-text"
             style={{
@@ -128,6 +152,20 @@ class CardList extends Component {
         </div>
         <div className="container" style={{ marginTop: "2vh", width: "25vw" }}>
           {this.renderPrevNextCardControls()}
+        </div>
+
+        <div className="add-deck-modal">
+          {this.state.modalState == "is-active" ? (
+            <div>
+              <AddCardForm
+                onToggleModal={() => this.toggleModal}
+                modalState={this.state.modalState}
+                deckID={this.props.currentDeckId}
+              />
+            </div>
+          ) : (
+            " "
+          )}
         </div>
       </div>
     );

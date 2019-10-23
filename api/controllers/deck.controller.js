@@ -43,11 +43,14 @@ exports.createDeck = async function(req, res, next) {
 exports.addCard = async function(req, res, next) {
   let card = {
     question: req.body.question,
-    answer: req.body.answer
+    answer: req.body.answer,
+    deckID: req.body.deckID || "unknown deckID"
   };
-  const deckID = req.body.id;
+  // const deckID = req.body._id;
+  console.log("AddCard Controller card: ", card);
+  console.log("AddCard Controller req body: ", req);
   try {
-    let addedCard = await DeckService.addCard(card, deckID);
+    let addedCard = await DeckService.addCard(card);
     return res.status(201).json({
       status: 201,
       data: addedCard,

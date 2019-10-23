@@ -131,10 +131,11 @@ export function addDeckSucceeded(data) {
   };
 }
 
-export const addDeck = formProps => dispatch => {
+export const addDeck = (formProps, callback) => dispatch => {
   dispatch(addDeckStarted);
-
+  console.log("In add-deck action", formProps);
   DecksApi.addDeck(formProps).then(res => dispatch(addDeckSucceeded(res.data)));
+  callback();
 };
 
 export function addCardsStarted() {
@@ -161,10 +162,12 @@ export function addCardsSucceeded(data) {
   };
 }
 
-export const addCards = formProps => dispatch => {
+export const addCard = (formProps, callback) => dispatch => {
+  console.log("in add card action formProps: ", formProps);
   dispatch(addCardsStarted);
-
-  DecksApi.addCards(formProps).then(res =>
+  console.log("in add card action");
+  DecksApi.addCard(formProps).then(res =>
     dispatch(addCardsSucceeded(res.data))
   );
+  callback();
 };

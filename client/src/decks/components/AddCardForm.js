@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
-import * as DeckActions from "../actions/decksActions";
+import * as DecksActions from "../actions/DecksActions";
 
-class AddDeckForm extends Component {
+class AddCardForm extends Component {
   onSubmit = formProps => {
-    formProps["_id"] = "1234cdrfr";
+    formProps["id"] = this.props.deckID;
     {
-      console.log("In add-deck comp", formProps);
+      console.log("In add-Card comp", formProps);
     }
-    this.props.addDeck(formProps, () => {
-      // this.props.history.push("/feature");
-      console.log("Added a Deck");
+    formProps["deckID"] = this.props.deckID;
+    this.props.addCard(formProps, () => {
+      console.log("addCard callback");
     });
   };
   render() {
@@ -23,21 +23,11 @@ class AddDeckForm extends Component {
         <div class={`modal ${this.props.modalState}`}>
           <div class="modal-background"></div>
           <header class="modal-card-head">
-            <p class="modal-card-title">Add Deck</p>
+            <p class="modal-card-title">Add Card</p>
           </header>
           <div class="modal-content" style={{ width: "25vw", height: "35vh" }}>
             <div>
               <form className="control" onSubmit={handleSubmit(this.onSubmit)}>
-                <fieldset>
-                  <label>Deck Title</label>
-                  <Field
-                    name="title"
-                    type="text"
-                    component="input"
-                    autoComplete="none"
-                    className="input is-warning"
-                  />
-                </fieldset>
                 <fieldset>
                   <label>Question</label>
                   <Field
@@ -62,10 +52,10 @@ class AddDeckForm extends Component {
                 <button
                   className="button is-dark"
                   style={{ marginTop: "5px" }}
-                  // onClick={this.props.onToggleModal()}
+                  //   onClick={this.props.onToggleModal()}
                 >
-                  {/* <Link to="feature">Add Deck</Link> */}
-                  Add Deck
+                  {/* <Link to="feature">Add Card</Link> */}
+                  Add Card
                 </button>
               </form>
             </div>
@@ -84,7 +74,7 @@ class AddDeckForm extends Component {
 export default compose(
   connect(
     null,
-    DeckActions
+    DecksActions
   ),
-  reduxForm({ form: "addDeck" })
-)(AddDeckForm);
+  reduxForm({ form: "addCard" })
+)(AddCardForm);

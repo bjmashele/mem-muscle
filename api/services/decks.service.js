@@ -18,20 +18,20 @@ exports.createDeck = async function(deck) {
   }
 };
 
-exports.addCard = async function(card, deckID) {
+exports.addCard = async function(card) {
   let newCard = {
     question: card.question,
     answer: card.answer,
     id: mongoose.Types.ObjectId(),
     createdAt: new Date()
   };
-
+  console.log("In addCard service: deckID: ", card.deckID);
   try {
     let savedCard = await Deck.findOneAndUpdate(
-      { id: deckID },
+      { id: card.deckID },
       { $push: { cards: newCard } }
     );
-    return savedCard;
+    return savedCard();
   } catch (error) {
     throw Error("Error while adding a new card");
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { reduxForm } from "redux-form";
 import Deck from "./Deck";
 import CardList from "./CardList";
 import AddDeckForm from "./AddDeckForm";
@@ -32,19 +33,6 @@ class DecksList extends Component {
     this.setState({ modalState: "is-active" });
   }
 
-  renderModal() {
-    if (this.state.modalState) {
-      return (
-        <AddDeckForm
-          onToggleModal={() => this.toggleModal}
-          modalState={this.state.modalState}
-        />
-      );
-    } else {
-      return "";
-    }
-  }
-
   render() {
     const decks = this.props.decks;
     //const onChooseDeckToStudy = this.props.onChooseDeckToStudy;
@@ -53,16 +41,17 @@ class DecksList extends Component {
 
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
-        {/* <button
+        <button
           className="button is-warning"
-          // onClick={() => this.toggleModal()}
+          onClick={() => this.toggleModal()}
           style={{
-            marginLeft: "85vw",
-            marginBottom: "5vh"
+            marginLeft: "75vw",
+            marginBottom: "5vh",
+            radius: "100%"
           }}
         >
           Add Deck
-        </button> */}
+        </button>
         <div className="columns is-multiline">
           {decks.slice(0, 8).map(deck => (
             <div className="column is-4">
@@ -70,7 +59,18 @@ class DecksList extends Component {
             </div>
           ))}
         </div>
-        {/* <div className="add-deck-modal">{this.renderModal()}</div> */}
+        <div className="add-deck-modal">
+          {this.state.modalState == "is-active" ? (
+            <div>
+              <AddDeckForm
+                onToggleModal={() => this.toggleModal}
+                modalState={this.state.modalState}
+              />
+            </div>
+          ) : (
+            " "
+          )}
+        </div>
       </div>
     );
     return renderDecks();
