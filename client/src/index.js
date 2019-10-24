@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+import history from "./history";
 
 import App from "./App";
 import Welcome from "./auth/components/Welcome";
@@ -11,6 +12,7 @@ import CardList from "./decks/components/CardList";
 import Signout from "./auth/components/auth/Signout";
 import Signin from "./auth/components/auth/Signin";
 import CardCollection from "./decks/components/CardCollection";
+import AddDeckForm from "./decks/components/AddDeckForm";
 
 // css styles
 import "./App.css";
@@ -23,17 +25,19 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App style={{ backgroundColor: "red" }}>
         <Route path="/" exact component={Signin} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/feature" component={Decks} />
+        <Route path="/feature" component={Decks} />
         <Route path="/study" component={CardCollection} />
         <Route path="/card-list" component={CardList} />
         <Route path="/signout" component={Signout} />
         <Route path="/signin" component={Signin} />
+        <Route path="/add-deck" component={AddDeckForm} />
+        <Route path="/deck-list" component={Decks} />
       </App>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.querySelector("#root")
 );

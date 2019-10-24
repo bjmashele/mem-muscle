@@ -2,34 +2,37 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
-import { Link } from "react-router-dom";
+import history from "../../history";
 import * as DecksActions from "../actions/DecksActions";
 
 class AddCardForm extends Component {
   onSubmit = formProps => {
     formProps["id"] = this.props.deckID;
-    {
-      console.log("In add-Card comp", formProps);
-    }
+
     formProps["deckID"] = this.props.deckID;
     this.props.addCard(formProps, () => {
-      console.log("addCard callback");
+      history.push("/deck-list");
     });
   };
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container" style={{ width: "350px", height: "400px" }}>
-        <div class={`modal ${this.props.modalState}`}>
-          <div class="modal-background"></div>
-          <header class="modal-card-head">
-            <p class="modal-card-title">Add Card</p>
-          </header>
-          <div class="modal-content" style={{ width: "25vw", height: "35vh" }}>
+      <div className="container ">
+        <div className={`modal ${this.props.modalState}`}>
+          <div className="modal-background"></div>
+
+          <div
+            className="modal-content columns is-centered is-text-centered"
+            style={{ width: "35vw", height: "40vh", textAlign: "center" }}
+          >
             <div>
-              <form className="control" onSubmit={handleSubmit(this.onSubmit)}>
+              <div className="title is-4 text-is-centered"> Add a Card</div>
+              <form
+                className="control modal-form "
+                onSubmit={handleSubmit(this.onSubmit)}
+              >
                 <fieldset>
-                  <label>Question</label>
+                  <label>Enter Question</label>
                   <Field
                     name="question"
                     type="text"
@@ -39,7 +42,7 @@ class AddCardForm extends Component {
                   />
                 </fieldset>
                 <fieldset>
-                  <label>Answer</label>
+                  <label>Enter Answer</label>
                   <Field
                     name="answer"
                     type="text"
@@ -49,14 +52,9 @@ class AddCardForm extends Component {
                   />
                 </fieldset>
 
-                <button
-                  className="button is-dark"
-                  style={{ marginTop: "5px" }}
-                  //   onClick={this.props.onToggleModal()}
-                >
-                  {/* <Link to="feature">Add Card</Link> */}
-                  Add Card
-                </button>
+                <div style={{ marginTop: "10px" }}>
+                  <button className="button is-warning">Add Card</button>
+                </div>
               </form>
             </div>
           </div>

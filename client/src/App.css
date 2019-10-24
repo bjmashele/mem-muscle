@@ -28,3 +28,7 @@ ul {
 .form-button {
   padding-left: 50%;
 }
+
+.card-list {
+  height: 90vh;
+}

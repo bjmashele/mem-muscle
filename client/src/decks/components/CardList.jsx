@@ -43,10 +43,10 @@ class CardList extends Component {
       this.state.currentIndex + 1 > totalCurrentCards - 1
         ? 0
         : this.state.currentIndex + 1;
-    this.setState(state => ({
+    this.setState({
       currentIndex: currentIndex,
       showAnswer: false
-    }));
+    });
   };
 
   prevIndex = () => {
@@ -55,10 +55,10 @@ class CardList extends Component {
       this.state.currentIndex - 1 < 0
         ? totalCurrentCards - 1
         : this.state.currentIndex - 1;
-    this.setState(state => ({
+    this.setState({
       currentIndex: currentIndex,
       showAnswer: false
-    }));
+    });
   };
 
   flipCard = () => {
@@ -101,46 +101,44 @@ class CardList extends Component {
     // cards = this.randomizeCards(cards);
     console.log("In card list, cards: ", cards);
     return (
-      <div className="card-list">
-        <div
-          className="card-item box container"
-          style={{
-            marginTop: "20vh",
-            width: "35vw",
-            height: "35vh",
-            zIndex: 5
-          }}
-        >
+      <div className="container card-list">
+        <div className="subtitle is-centered">Deck Title</div>
+        <div className="columns is-centered">
           <button
             className="button is-warning"
             onClick={() => this.toggleModal()}
             style={{
-              paddingBottom: "5vh"
+              paddingBottom: "3vh"
             }}
           >
             Add Card
           </button>
+        </div>
+        <div
+          className="card-item box container"
+          style={{
+            marginTop: "5vh",
+            width: "35vw",
+            height: "35vh"
+          }}
+        >
           <div
             className="card-text"
             style={{
-              height: "20vw",
+              height: "25vh",
               textAlign: "center",
-              verticalAlign: "middle",
-              lineHeight: "25vh"
+              verticalAlign: "middle"
             }}
           >
             {this.state.showAnswer
-              ? cards[this.state.currentIndex].back
-              : cards[this.state.currentIndex].front}
+              ? cards[this.state.currentIndex].question
+              : cards[this.state.currentIndex].answer}
           </div>
           {}
           <div
             className="card-flip"
             style={{ paddingLeft: "15vw", paddingRight: "15vw" }}
           >
-            {/* <i className="fa fa-repeat" aria-hidden="true">
-              flip
-            </i> */}
             <div className="flip" onClick={this.flipCard}>
               <i
                 className="fa fa-repeat"

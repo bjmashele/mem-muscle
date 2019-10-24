@@ -3,21 +3,17 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
+import history from "../../history";
 import * as DeckActions from "../actions/decksActions";
 
 class AddDeckForm extends Component {
   onSubmit = formProps => {
-    formProps["_id"] = "1234cdrfr";
-    {
-      console.log("In add-deck comp", formProps);
-    }
     this.props.addDeck(formProps, () => {
-      this.props.onToggleModal();
-      this.props.history.push("/feature");
-
-      console.log("Added a Deck");
+      history.push("/deck-list");
     });
   };
+
+  // submitAndCloseModal =
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -68,14 +64,7 @@ class AddDeckForm extends Component {
                 </fieldset>
 
                 <div style={{ marginTop: "10px" }}>
-                  <button
-                    className="button is-warning"
-
-                    // onClick={this.props.onToggleModal()}
-                  >
-                    {/* <Link to="feature">Add Deck</Link> */}
-                    Add Deck
-                  </button>
+                  <button className="button is-warning">Add Deck</button>
                 </div>
               </form>
             </div>

@@ -7,7 +7,7 @@ export default ({ children }) => (
 
     {children}
     <footer
-      className="container"
+      className="container footer"
       style={{ height: "5vh", backgroundColor: "#5f6769" }}
     >
       Hello Footer
