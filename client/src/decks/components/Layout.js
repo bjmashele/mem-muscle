@@ -11,7 +11,7 @@ import DecksController from "./DecksController";
 const Layout = () => {
   return (
     <div>
-      <div className="content">
+      <div>
         <div className="title is-3" style={{ textAlign: "center" }}>
           Card Decks
         </div>

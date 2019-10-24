@@ -12,34 +12,42 @@ class AddDeckForm extends Component {
       console.log("In add-deck comp", formProps);
     }
     this.props.addDeck(formProps, () => {
-      // this.props.history.push("/feature");
+      this.props.onToggleModal();
+      this.props.history.push("/feature");
+
       console.log("Added a Deck");
     });
   };
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container" style={{ width: "350px", height: "400px" }}>
-        <div class={`modal ${this.props.modalState}`}>
-          <div class="modal-background"></div>
-          <header class="modal-card-head">
-            <p class="modal-card-title">Add Deck</p>
-          </header>
-          <div class="modal-content" style={{ width: "25vw", height: "35vh" }}>
+      <div className="container ">
+        <div className={`modal ${this.props.modalState}`}>
+          <div className="modal-background"></div>
+
+          <div
+            className="modal-content columns is-centered is-text-centered"
+            style={{ width: "35vw", height: "40vh", textAlign: "center" }}
+          >
             <div>
-              <form className="control" onSubmit={handleSubmit(this.onSubmit)}>
+              <div className="title is-4 text-is-centered"> Create a Deck</div>
+              <form
+                className="control modal-form "
+                onSubmit={handleSubmit(this.onSubmit)}
+              >
                 <fieldset>
-                  <label>Deck Title</label>
+                  <label>Enter Deck Title</label>
                   <Field
                     name="title"
                     type="text"
                     component="input"
                     autoComplete="none"
-                    className="input is-warning"
+                    className="input is-primary"
                   />
                 </fieldset>
+                <hr style={{ lineWidth: "3px" }} />
                 <fieldset>
-                  <label>Question</label>
+                  <label>Enter Question</label>
                   <Field
                     name="question"
                     type="text"
@@ -49,7 +57,7 @@ class AddDeckForm extends Component {
                   />
                 </fieldset>
                 <fieldset>
-                  <label>Answer</label>
+                  <label>Enter Answer</label>
                   <Field
                     name="answer"
                     type="text"
@@ -59,14 +67,16 @@ class AddDeckForm extends Component {
                   />
                 </fieldset>
 
-                <button
-                  className="button is-dark"
-                  style={{ marginTop: "5px" }}
-                  // onClick={this.props.onToggleModal()}
-                >
-                  {/* <Link to="feature">Add Deck</Link> */}
-                  Add Deck
-                </button>
+                <div style={{ marginTop: "10px" }}>
+                  <button
+                    className="button is-warning"
+
+                    // onClick={this.props.onToggleModal()}
+                  >
+                    {/* <Link to="feature">Add Deck</Link> */}
+                    Add Deck
+                  </button>
+                </div>
               </form>
             </div>
           </div>

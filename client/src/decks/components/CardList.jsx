@@ -80,7 +80,7 @@ class CardList extends Component {
     return cards;
   }
 
-  renderPrevNextCardControls() {
+  renderNavigationControls() {
     return (
       <div className="controller">
         <div
@@ -99,7 +99,7 @@ class CardList extends Component {
   render() {
     let cards = this.props.currentCards;
     // cards = this.randomizeCards(cards);
-
+    console.log("In card list, cards: ", cards);
     return (
       <div className="card-list">
         <div
@@ -151,7 +151,7 @@ class CardList extends Component {
           </div>
         </div>
         <div className="container" style={{ marginTop: "2vh", width: "25vw" }}>
-          {this.renderPrevNextCardControls()}
+          {this.renderNavigationControls()}
         </div>
 
         <div className="add-deck-modal">

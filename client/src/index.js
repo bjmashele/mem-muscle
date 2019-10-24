@@ -11,32 +11,21 @@ import CardList from "./decks/components/CardList";
 import Signout from "./auth/components/auth/Signout";
 import Signin from "./auth/components/auth/Signin";
 import CardCollection from "./decks/components/CardCollection";
-import TestComponent from "./common/TestComponent";
 
-// styles
-
+// css styles
 import "./App.css";
 import "bulma/css/bulma.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// initiate store
 import { configureStore } from "./store/configureStore";
 
 const store = configureStore();
 
-// const store = createStore(
-//   reducers,
-//   {
-//     auth: { authenticated: localStorage.getItem('token') }
-//   },
-//   applyMiddleware(reduxThunk)
-// );
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App>
-        <Route path="/" exact component={Welcome} />
+      <App style={{ backgroundColor: "red" }}>
+        <Route path="/" exact component={Signin} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/feature" component={Decks} />
         <Route path="/study" component={CardCollection} />

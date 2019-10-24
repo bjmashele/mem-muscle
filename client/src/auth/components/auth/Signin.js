@@ -3,8 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-
-import bgImage from "../../../assets/muscle.jpg";
+import { Link } from "react-router-dom";
 
 class Signin extends Component {
   onSubmit = formProps => {
@@ -17,41 +16,51 @@ class Signin extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="columns" style={{ minHeight: "75vh" }}>
-        <div className="column is-4">
-          <div style={{ width: "25vw", marginTop: "25vh" }}>
-            <form className="control" onSubmit={handleSubmit(this.onSubmit)}>
-              <fieldset>
-                <label>Email</label>
-                <Field
-                  name="email"
-                  type="text"
-                  component="input"
-                  autoComplete="none"
-                  className="input is-warning"
-                />
-              </fieldset>
-              <fieldset>
-                <label>Password</label>
-                <Field
-                  name="password"
-                  type="password"
-                  component="input"
-                  autoComplete="none"
-                  className="input is-warning"
-                />
-              </fieldset>
-              <div>{this.props.errorMessage}</div>
-              <button className="button is-dark" style={{ marginTop: "5px" }}>
-                Sign In!
-              </button>
-            </form>
-          </div>
+      <div style={{ minHeight: "95vh", backgroundColor: "white" }}>
+        <div className="subtitle memmuscle-text">
+          Brain workouts one flash card at a time
         </div>
-        <div
-          className="column is-8 bg-image"
-          style={{ marginTop: "8vh" }}
-        ></div>
+        <div className="columns">
+          <div className="column is-4">
+            <div
+              style={{ width: "25vw", marginTop: "25vh", paddingLeft: "5vw" }}
+            >
+              <form className="control" onSubmit={handleSubmit(this.onSubmit)}>
+                <fieldset>
+                  <label>Email</label>
+                  <Field
+                    name="email"
+                    type="text"
+                    component="input"
+                    autoComplete="none"
+                    className="input is-dark"
+                  />
+                </fieldset>
+                <fieldset>
+                  <label>Password</label>
+                  <Field
+                    name="password"
+                    type="password"
+                    component="input"
+                    autoComplete="none"
+                    className="input is-dark"
+                  />
+                </fieldset>
+                <div>{this.props.errorMessage}</div>
+                <button className="button is-dark" style={{ marginTop: "5px" }}>
+                  Sign In!
+                </button>
+              </form>
+              <div className="register" style={{ textAlign: "center" }}>
+                Sign Up <Link to="/signup">here</Link>
+              </div>
+            </div>
+          </div>
+          <div
+            className="column is-8 bg-image"
+            style={{ marginTop: "8vh" }}
+          ></div>
+        </div>
       </div>
     );
   }

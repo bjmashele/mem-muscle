@@ -35,18 +35,16 @@ class DecksList extends Component {
 
   render() {
     const decks = this.props.decks;
-    //const onChooseDeckToStudy = this.props.onChooseDeckToStudy;
-    // const { cards } = this.props.cards;
     const currentDeckId = this.props.currentDeckId;
 
     const renderDecks = () => (
       <div className="container has-gutter-top-bottom">
         <button
-          className="button is-dark  is-rounded"
+          className="button is-link "
           onClick={() => this.toggleModal()}
           style={{
-            marginLeft: "55vw",
-            marginBottom: "5vh"
+            marginLeft: "73.5vw",
+            marginBottom: "2vh"
           }}
         >
           Add Deck

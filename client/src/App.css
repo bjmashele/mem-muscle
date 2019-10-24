@@ -2,8 +2,29 @@ ul {
   list-style-type: none;
 }
 
+.app {
+  background-color: #fff8cd;
+}
+
 .bg-image {
   background-image: url("./assets/muscle2.jpeg");
+  background-repeat: no-repeat;
   background-size: contain;
-  background-repeat: "no-repeat";
+}
+
+.memmuscle-text {
+  font-family: "Comic Sans", "Comic Sans MS", cursive;
+  background-color: white;
+  font-size: 48px;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+.modal-form {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.form-button {
+  padding-left: 50%;
 }

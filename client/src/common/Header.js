@@ -3,64 +3,24 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Header extends Component {
-  renderLinks() {
-    if (this.props.authenticated) {
-      return (
-        <div className="navbar-item">
-          <div className="buttons">
-            <a className="button is-dark">
-              <Link to="/signout">Sign Out</Link>
-            </a>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="navbar-item">
-          <div className="buttons">
-            <a>
-              <Link
-                to="/signup"
-                style={{
-                  color: "#1b120f",
-                  fontWeight: "bold",
-                  paddingRight: "10px"
-                }}
-              >
-                Sign Up
-              </Link>
-            </a>
-            <a>
-              <Link
-                to="/signin"
-                style={{ color: "#1b120f", fontWeight: "bold" }}
-              >
-                Sign In
-              </Link>
-            </a>
-          </div>
-        </div>
-      );
-    }
-  }
-
   render() {
     return (
-      <div className="container" style={{ width: "100vw" }}>
+      <div>
         <nav
-          className="navbar is-warning"
+          className="navbar is-dark"
           role="navigation"
           aria-label="main navigation"
         >
-          <div className="navbar-brand">
-            <a className="navbar-item">
-              <Link to="/">Memrily</Link>
-            </a>
+          <div
+            className="navbar-brand"
+            style={{ color: "#f9f9f9", textDecoration: "bold" }}
+          >
+            MemMuscle
           </div>
-          <div className="navbar-menu">
-            <div class="navbar-start"></div>
-            <div className="navbar-end"></div>
-            {this.renderLinks()}
+          <div className="navbar-end">
+            <div className="navbar-item">
+              {this.props.isAuth ? <Link to="/">Log out</Link> : ""}
+            </div>
           </div>
         </nav>
       </div>
@@ -68,8 +28,11 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
-}
+const mapStateToProps = state => ({
+  isAuth: state.auth.authenticated
+});
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  null
+)(Header);
