@@ -11,7 +11,8 @@ class AddCardForm extends Component {
 
     formProps["deckID"] = this.props.deckID;
     this.props.addCard(formProps, () => {
-      history.push("/deck-list");
+      history.push("/card-list");
+      console.log("added a deck");
     });
   };
   render() {

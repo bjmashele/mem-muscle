@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as decksActions from "../actions/decksActions";
 import AddCardForm from "./AddCardForm";
+import history from "../../history";
 
 class CardList extends Component {
   // randomize cards
@@ -26,6 +27,7 @@ class CardList extends Component {
   toggleModal = () => {
     const modalProp = () => {
       if (this.state.modalState == " ") {
+        history.push("/add-card");
         return "is-active";
       } else {
         return " ";

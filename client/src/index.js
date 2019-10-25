@@ -34,7 +34,8 @@ ReactDOM.render(
         <Route path="/card-list" component={CardList} />
         <Route path="/signout" component={Signout} />
         <Route path="/signin" component={Signin} />
-        <Route path="/add-deck" component={AddDeckForm} />
+        <Route path="/add-deck" component={Decks} />
+        <Route path="/add-card" component={CardList} />
         <Route path="/deck-list" component={Decks} />
       </App>
     </Router>

@@ -6,6 +6,7 @@ import CardList from "./CardList";
 import AddDeckForm from "./AddDeckForm";
 import TestModal from "./TestModal";
 import { Container, Row, Col } from "react-grid";
+import history from "../../history";
 
 const cellStyle = {
   borderStyle: "solid",
@@ -23,6 +24,7 @@ class DecksList extends Component {
   toggleModal = () => {
     const modalProp = () => {
       if (this.state.modalState == " ") {
+        history.push("/add-deck");
         return "is-active";
       } else {
         return " ";

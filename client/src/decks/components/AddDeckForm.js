@@ -13,6 +13,10 @@ class AddDeckForm extends Component {
     });
   };
 
+  cancelFormSubmit = () => {
+    this.props.onToggleModal();
+    history.push("/deck-list");
+  };
   // submitAndCloseModal =
   render() {
     const { handleSubmit } = this.props;
@@ -72,7 +76,7 @@ class AddDeckForm extends Component {
           <button
             class="modal-close is-large"
             aria-label="close"
-            onClick={this.props.onToggleModal()}
+            onClick={this.cancelFormSubmit}
           ></button>
         </div>
       </div>
