@@ -1,6 +1,6 @@
 import { HttpClient } from "./httpClient";
 
-const DECKS_API = "https://limitless-river-84405.herokuapp.com/api/decks";
+const DECKS_API = "https://mem-muscle.herokuapp.com/api/decks";
 
 const fetchDecks = () => HttpClient.get(DECKS_API);
 const addDeck = data => HttpClient.post(DECKS_API, data);
