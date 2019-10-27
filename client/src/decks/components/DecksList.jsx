@@ -5,7 +5,6 @@ import Deck from "./Deck";
 import CardList from "./CardList";
 import AddDeckForm from "./AddDeckForm";
 import TestModal from "./TestModal";
-import { Container, Row, Col } from "react-grid";
 import history from "../../history";
 
 const cellStyle = {
