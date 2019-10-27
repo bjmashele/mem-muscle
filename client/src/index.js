@@ -5,13 +5,11 @@ import { Provider } from "react-redux";
 import history from "./history";
 
 import App from "./App";
-import Welcome from "./auth/components/Welcome";
 import Signup from "./auth/components/auth/Signup";
 import Decks from "./decks/components/Decks.jsx";
 import CardList from "./decks/components/CardList";
 import Signout from "./auth/components/auth/Signout";
 import Signin from "./auth/components/auth/Signin";
-import AddDeckForm from "./decks/components/AddDeckForm";
 
 // css styles
 import "./App.css";

@@ -27,7 +27,7 @@ class AddDeckForm extends Component {
 
           <div
             className="modal-content columns is-centered is-text-centered"
-            style={{ width: "35vw", height: "40vh", textAlign: "center" }}
+            style={{ width: "35vw", height: "50vh", textAlign: "center" }}
           >
             <div>
               <div className="title is-4 text-is-centered"> Create a Deck</div>
