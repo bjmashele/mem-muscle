@@ -8,7 +8,7 @@ import { HttpClient } from "./httpClient";
 
 // const DECKS_API = `${API}/decks`;
 // Use json-server
-const DECKS_API = "http://localhost:5000/api/decks";
+const DECKS_API = "/api/decks";
 //const DECKS_API = "/api/decks";
 // Get card decks
 const fetchDecks = () => HttpClient.get(DECKS_API);
