@@ -2,6 +2,18 @@ ul {
   list-style-type: none;
 }
 
+.body {
+  font-family: "Playfair Display", "Roboto Regular", Times;
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+  background-color: "#db996c";
+  align-content: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  padding-right: 0px !important;
+  min-height: 100vh;
+}
 .app {
   background-color: #fff8cd;
 }
