@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { stat } from "fs";
 import DecksList from "../components/DecksList.jsx";
-import CardsShowCase from "./CardsShowCase";
 
 import * as decksActions from "../actions/decksActions";
-import { DecksApi } from "../../api/decksApi";
-
-// const data = [{ name: 1 }, { name: 'two' }];
 
 class decksContainer extends Component {
   componentDidMount() {
     this.props.fetchDecks();
   }
 
-  // onChooseDeckToStudy = id => {
-  //   this.props.dispatch({ type: "SET_CURRENT_DECK_ID", payload: id });
-  // };
   render() {
     if (this.props.isLoading) {
       return <div className="loading">Loading ...</div>;
@@ -54,12 +46,6 @@ const mapDispatchToProps = dispatch => ({
   onChooseDeckToStudy: id => dispatch(decksActions.setCurrentDeckId(id)),
   dispatch
 });
-
-// const mapDispatchToProps = dispatch => ({
-//   fetchDecks: decksActions.fetchDecks,
-//   setCurrentDeckId: decksActions.setCurrentDeckId,
-//   dispatch: dispatch
-// });
 
 export default connect(
   mapStateToProps,

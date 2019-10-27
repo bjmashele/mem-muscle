@@ -11,7 +11,6 @@ import Decks from "./decks/components/Decks.jsx";
 import CardList from "./decks/components/CardList";
 import Signout from "./auth/components/auth/Signout";
 import Signin from "./auth/components/auth/Signin";
-import CardCollection from "./decks/components/CardCollection";
 import AddDeckForm from "./decks/components/AddDeckForm";
 
 // css styles
@@ -30,7 +29,6 @@ ReactDOM.render(
         <Route path="/" exact component={Signin} />
         <Route path="/signup" component={Signup} />
         <Route path="/feature" component={Decks} />
-        <Route path="/study" component={CardCollection} />
         <Route path="/card-list" component={CardList} />
         <Route path="/signout" component={Signout} />
         <Route path="/signin" component={Signin} />

@@ -80,8 +80,6 @@ export function setCurrentCards(decks, cards, currentDeckId) {
     const deckById = decks.filter(deck => {
       return deck.id === currentDeckId;
     });
-    // console.log("deck by id: ", JSON.stringify(deckById));
-    // console.log("deck by id:cards ", deckById[0].cards);
 
     return deckById[0].cards;
   };
