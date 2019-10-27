@@ -4,10 +4,7 @@ import { AuthApi } from "../../api/authApi";
 
 export const signup = (formProps, callback) => async dispatch => {
   try {
-    // const response = await axios.post(
-    //   'http://localhost:3030/api/signup',
-    //   formProps
-    // );
+    
     const response = await AuthApi.signupUser(formProps);
 
     dispatch({ type: AUTH_USER, payload: response.data.token });
