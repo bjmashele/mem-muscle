@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // Configure the database
 const mongoose = require("mongoose");
-const dbConfig = require("./config/database.config.js");
+//const dbConfig = require("./config/database.config.js");
 
 mongoose.Promise = global.Promise;
 
@@ -40,17 +40,9 @@ mongoose
     process.exit();
   });
 
-// Routes
-
-// test route
-// app.get("/", (req, res) => {
-//   res.json({ message: "Welcome to Card deck microservice" });
-// });
-
 // api routes
 
 require("./api/routes/deck.routes.js")(app);
-//require("./api/routes/auth.routes.js")(app);
 
 //Start server
 app.listen(PORT, () => {
