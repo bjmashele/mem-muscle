@@ -7,22 +7,36 @@ import history from "../../history";
 import * as DeckActions from "../actions/decksActions";
 
 class AddDeckForm extends Component {
-  onSubmit = formProps => {
-    this.props.addDeck(formProps, () => {
-      history.push("/deck-list");
+  constructor() {
+    super();
+    this.state = {
+      modalState: "is-active"
+    };
+  }
+
+  toggleModal = () => {
+    const getModalState = () => {
+      if (this.state.modalState == " ") {
+        return "is-active";
+      } else {
+        return " ";
+      }
+    };
+    this.setState({
+      modalState: getModalState()
     });
   };
 
-  cancelFormSubmit = () => {
-    this.props.onToggleModal();
-    history.push("/deck-list");
+  onSubmit = formProps => {
+    this.props.addDeck(formProps, console.log("Added a card"));
+    this.toggleModal();
   };
-  // submitAndCloseModal =
+
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="container ">
-        <div className={`modal ${this.props.modalState}`}>
+        <div className={`modal ${this.state.modalState}`}>
           <div className="modal-background"></div>
 
           <div
@@ -76,7 +90,7 @@ class AddDeckForm extends Component {
           <button
             class="modal-close is-large"
             aria-label="close"
-            onClick={this.cancelFormSubmit}
+            onClick={this.toggleModal}
           ></button>
         </div>
       </div>

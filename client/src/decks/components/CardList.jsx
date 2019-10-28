@@ -27,7 +27,7 @@ class CardList extends Component {
   toggleModal = () => {
     const modalProp = () => {
       if (this.state.modalState == " ") {
-        history.push("/add-card");
+        //history.push("/add-card");
         return "is-active";
       } else {
         return " ";

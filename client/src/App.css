@@ -18,6 +18,9 @@ ul {
   background-color: #fff8cd;
 }
 
+.header-width {
+  width: "100%";
+}
 .bg-image {
   background-image: url("./assets/muscle2.jpeg");
   background-repeat: no-repeat;
@@ -43,4 +46,7 @@ ul {
 
 .card-list {
   height: 90vh;
+}
+
+@media screen and (min-width: 420px) {
 }

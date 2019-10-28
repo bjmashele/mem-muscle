@@ -12,29 +12,30 @@ class Deck extends Component {
       <div
         className="deck box"
         style={{
-          minWidth: "20vw",
+          minWidth: "250px",
+          maxWidth: "300px",
           minHeight: "20vh"
         }}
         onClick={() => this.props.setCurrentDeckId(this.props.deck.id)}
       >
-        <div className="subtitle" style={{ fontWeight: "bold" }}>
+        <div
+          className="subtitle"
+          style={{ fontWeight: "bold", textAlign: "center" }}
+        >
           {this.props.deck.title}
         </div>
         <hr />
         <div style={{ textAlign: "left" }}>
-          Number of Cards: {this.props.deck.cards.length}
+          Number of cards: {this.props.deck.cards.length}
         </div>
 
         <br />
-        <Link to="/card-list">
-          {/* <span style={{ textAlign: "center" }}> Study Deck</span> */}
-          <div
-            className="button is-dark is-outlined"
-            style={{ textDecoration: "none" }}
-          >
-            Study Deck
-          </div>
-        </Link>
+        <div style={{ alignContent: "center", textDecoration: "none" }}>
+          <Link to="/card-list">
+            {/* <span style={{ textAlign: "center" }}> Study Deck</span> */}
+            <div className="button is-dark is-outlined">Study Deck</div>
+          </Link>
+        </div>
       </div>
     );
   }

@@ -53,7 +53,7 @@ class Signin extends Component {
               </form>
               <hr />
               <div className="register" style={{ textAlign: "center" }}>
-                Sign Up <Link to="/signup">here</Link>
+                Sign up <Link to="/signup">here</Link>
                 <br />
                 Or signin as a guest [email: guest@mail.com, password: guest]
               </div>

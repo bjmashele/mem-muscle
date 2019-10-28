@@ -20,15 +20,14 @@ class DecksList extends Component {
     };
   }
   toggleModal = () => {
-    const modalProp = () => {
+    const getModalState = () => {
       if (this.state.modalState == " ") {
-        history.push("/add-deck");
         return "is-active";
       } else {
         return " ";
       }
     };
-    this.setState({ modalState: modalProp() });
+    this.setState({ modalState: getModalState() });
   };
   showModal() {
     this.setState({ modalState: "is-active" });
@@ -39,35 +38,36 @@ class DecksList extends Component {
     const currentDeckId = this.props.currentDeckId;
 
     const renderDecks = () => (
-      <div className="container has-gutter-top-bottom">
-        <button
-          className="button is-link "
-          onClick={() => this.toggleModal()}
-          style={{
-            marginLeft: "73.5vw",
-            marginBottom: "2vh"
-          }}
-        >
-          Add Deck
-        </button>
-        <div className="columns is-multiline">
-          {decks.slice(0, 8).map(deck => (
-            <div className="column is-4">
-              <Deck deck={deck} />
+      <div style={{ minHeight: "75vh" }}>
+        <div className="columns is-centered">
+          <div className="column is-11">
+            <button
+              className="button is-link "
+              onClick={() => this.toggleModal()}
+              style={{ marginBottom: "15px" }}
+            >
+              Add Deck
+            </button>
+            <div className="columns is-multiline">
+              {decks.slice(0, 8).map(deck => (
+                <div className="column is-4">
+                  <Deck deck={deck} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="add-deck-modal">
-          {this.state.modalState == "is-active" ? (
-            <div>
-              <AddDeckForm
-                onToggleModal={() => this.toggleModal}
-                modalState={this.state.modalState}
-              />
+            <div className="add-deck-modal">
+              {this.state.modalState == "is-active" ? (
+                <div>
+                  <AddDeckForm
+                    onToggleModal={() => this.toggleModal}
+                    modalState={this.state.modalState}
+                  />
+                </div>
+              ) : (
+                " "
+              )}
             </div>
-          ) : (
-            " "
-          )}
+          </div>
         </div>
       </div>
     );

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="header-width">
         <nav
           className="navbar is-dark"
           role="navigation"
