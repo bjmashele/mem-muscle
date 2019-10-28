@@ -4,6 +4,15 @@ Is a flash card with reactJS front-end and expressJS backend.
 
 The app is deployed on Heroku [ https://mem-muscle.herokuapp.com/ ]
 
+Technologies
+
+- ReactJS
+- Redux
+- Normalizr
+- MongoDB
+- ExpressJS
+- Bulma CSS
+
 ToDos
 
 - Refactor class components and make them functional.
